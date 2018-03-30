@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d"></div>
+	</body>
+</html>
+<script src="../public.js"></script>
+<script>
+	setInterval(function (){
+		showTime();
+	},1000);
+	
+	function showTime(){
+		var d = new Date();
+		var oDiv = document.getElementById("d");
+		oDiv.innerHTML = dateToString();
+	}
+	showTime();
+</script>
+

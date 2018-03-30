@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		9999
+	</body>
+</html>
+<script>
+	document.addEventListener("click",function(){
+		alert("执行document的冒泡");
+	})
+	document.addEventListener("click",function(){
+		alert("执行document的捕获");
+	},true)
+	window.addEventListener("click",function(){
+		alert("执行window的冒泡");
+	})
+	window.addEventListener("click",function(){
+		alert("执行window的捕获");
+	},true)
+</script>

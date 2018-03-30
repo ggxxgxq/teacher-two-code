@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//点击文档跨域请求 服务器的数据
+	document.onclick = function(){
+		var script = document.createElement("script");
+		document.body.appendChild(script);
+		script.type = "text/javascript";
+		script.src = "http://127.0.0.1/ajaxday22/jsonp.php?callback=fn";
+	}
+	function fn(res){//res就代表了服务器传回来的数据
+		//alert(typeof res);
+		alert( res );
+	}
+</script>

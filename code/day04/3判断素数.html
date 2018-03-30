@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//判断任意一个数是不是素数
+	// 素数 （质数）： 只能被1 和 它本身整除的数  
+	// 7 ： 1 7
+	// 8 ： 1 2 4 8
+	// 11 ：1 11
+	//方案一 ： 如果是素数 ： 因数和   这个数 + 1
+	//方案二 ：如果是素数 ： 因数 两个 
+	/*var sum = 0;//累加因数和 
+	var num = 100;
+	for( var i = 1 ; i <= num ; i++ ){
+		if( num % i == 0 ){
+			sum += i; //累加因数和  i就是num的因数
+		}
+	}
+	if( num + 1 == sum ){
+		alert( num + "是素数" );
+	}*/
+	//方案三 ： 
+	// 7 ： 2---6  这个区间内 如果有能被7整数的数  就break  
+	//判断循环变量 如果循环变量的值 就是这个数本身   该数一定是素数
+	// 8 ： 2--7 
+	/*var num = 2;
+	for( var i = 2 ; i < num ; i++ ){
+		if( num % i == 0 ){
+			break;
+		}
+	}
+	if( i == num ){
+		alert( num + "是素数" );
+	}*/
+	
+	//方案四 ： 通过定义一个开关变量控制  假设 flag 值如果是true，是素数
+	var flag = true;//是素数
+	var num = 101;
+	
+	for( var i = 2 ; i < num ; i++ ){
+		if( num % i == 0 ){//只要满足这个条件 说明num不是素数
+			flag = false;
+			break;
+		}
+	}
+	
+	if( flag ){//通过flag变量的值 控制结果
+		alert( num + "是素数" );
+	}
+</script>

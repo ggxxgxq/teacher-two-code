@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Animal(){
+		this.name = "xb";
+		//delete this.name;
+	}
+	Animal.prototype.name = "db";
+	var a1 = new Animal();
+	delete a1.name;
+	//alert( Animal.prototype.isPrototypeOf( a1 ) );
+	//alert( a1.name );
+	//alert( a1.hasOwnProperty( "name" ) );
+	
+	
+	alert( "name" in a1 );
+</script>

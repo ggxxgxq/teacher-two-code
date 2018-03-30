@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" name="fx"/>反选
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+	</body>
+</html>
+<script type="text/javascript">
+	var $cks = $("input[name=h]");
+	$("input[name=fx]").click(function(){
+		for( var i = 0 ; i < $cks.length ; i++ ){
+			//$cks[i].checked
+			if( $cks.eq(i).prop("checked") ){
+				$cks.eq(i).prop("checked",false);
+			}else{
+				$cks.eq(i).prop("checked",true);
+			}
+		}
+	})
+</script>

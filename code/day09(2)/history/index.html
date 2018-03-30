@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		主页
+		<input type="button" value="跳转" onclick= "location.href='page.html'" />
+		<input type="button" value="前进" onclick="fn()" />
+	</body>
+</html>
+<script>
+	function fn(){ //事件处理程序
+		history.go(1);
+	}
+</script>

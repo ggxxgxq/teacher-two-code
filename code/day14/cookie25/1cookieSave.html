@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="setCookie" id="btn1"/>
+		
+		<input type="button" value="跳转" onclick = "location.href='page.html'" />
+	</body>
+</html>
+<script>
+	onload = function(){
+		
+		var oSave = document.getElementById("btn1");
+		
+		oSave.onclick = function(){
+			document.cookie = "upwd=111";
+			document.cookie = "addr=北京";
+			document.cookie = "uname=lichune";
+			document.cookie = "job=teacher";
+		}
+	}
+	
+</script>

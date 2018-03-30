@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*function fn(){
+		alert(this);
+	}
+	fn.apply(document);*/
+	
+	//iphone5  父类
+	function iPhone5(price,color,size,memsize){
+		this.price = price;
+		this.color = color;
+		this.size = size;
+		this.memsize = memsize;
+		
+		this.sendMessage = function(){
+			console.log("发短信");
+		}
+		this.call = function(){
+			console.log("打电话");
+		}
+	}
+	iPhone5.prototype.type = "p5";
+	iPhone5.prototype.music = function(){
+		console.log("播放音乐");
+	}
+	
+	//iphone6  子类
+	function iPhone6(price,color,size,memsize){
+		//在函数内部  接收实参 -- arguments
+		//iPhone5.apply(this,[price,color,size,memsize]);
+		iPhone5.apply(this,arguments);
+		
+		this.photo = function(){
+			console.log("拍照");
+		}
+	}
+	
+	var p6 = new iPhone6(1111,"white",8,64);
+	//console.log(p6);
+	//console.log(p6.type);
+</script>

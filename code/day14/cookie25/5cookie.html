@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="存cookie" id="btn"/>
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	//存多个用户
+	oBtn.onclick = function(){
+		var arr = [
+					{ "uname" : "admin" , "upwd" : "111"  },
+					{ "uname" : "admin1" , "upwd" : "222"  },
+					{ "uname" : "admin2" , "upwd" : "133311"},
+					{ "uname" : "admin3" , "upwd" : "444"  }
+				  ]
+		//JSON.stringify(  );
+		document.cookie = "userlist=" + JSON.stringify( arr ) ;
+		
+		//"userlist=[object Object],[object Object],[object Object],[object Object]"
+		console.log( document.cookie );
+		var str = document.cookie;
+		var arr = str.split("=");
+		//alert(typeof JSON.parse( arr[1] )  );
+		arr = JSON.parse( arr[1] );
+		var html = "";
+		for( var i = 0 ; i < arr.length ; i++ ){
+			html += "<p>"+ arr[i].uname +"</p>";
+		}
+		document.body.innerHTML += html;
+	}
+</script>

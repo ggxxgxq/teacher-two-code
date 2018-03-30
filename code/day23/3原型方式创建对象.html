@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//创建一个构造函数
+	function Animal(){
+		 
+	}
+	// 每一个构造函数都有一个原型属性 prototype
+	Animal.prototype.name = "小白";  //原型属性
+	Animal.prototype.age = 2;
+	
+	//原型方法
+	Animal.prototype.eat = function(){
+		return this.name + "在吃.....";//this 指向构造函数new出来的对象
+	}
+	
+	var a1 = new Animal();
+	var a2 = new Animal();
+	//console.log(a1.name);
+	//console.log(a1.eat());
+	//console.log( a1.eat == a2.eat );
+	console.log( a1.name , a2.name );
+</script>

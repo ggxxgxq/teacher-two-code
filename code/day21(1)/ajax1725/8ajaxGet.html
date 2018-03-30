@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取服务器的数据" id="btn" />
+	</body>
+</html>
+<script src="ajax.js"></script>
+<script>
+	var oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		ajaxGet("1.txt",function (res){
+			alert( res );
+		});
+		//alert( "服务器返回的数据是：" + res );//当服务器返回结果后 输出 
+	}
+	/*function fn(res){
+		alert( res );
+	}*/
+</script>

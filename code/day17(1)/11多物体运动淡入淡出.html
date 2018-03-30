@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			margin-bottom: 10px;
+			opacity: 0.3;
+		}
+	</style>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<script>
+	//鼠标移入到某个div上该div透明度为1   离开时 恢复0.3
+	var divs = document.getElementsByTagName("div");
+	for( var i = 0 ; i < divs.length ; i++ ){
+		divs[i].alpha = 30;//让每一个div对象都自带一个alpha属性
+		divs[i].onmouseover = function(){
+			startMove(this,100);
+		}
+		divs[i].onmouseout = function(){
+			startMove(this,30);
+		}
+	}
+	//var alpha = 30;
+	function startMove(obj,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var speed = target - obj.alpha > 0 ? 1 :-1;
+			if( obj.alpha == target ){
+				clearInterval( obj.timer );
+			}else{
+				obj.alpha += speed;
+				obj.style.opacity = obj.alpha / 100;
+			}
+		},30)
+	}
+	/*
+	 注意：多物体运动时，定时器之间会互相影响，当某个操作结束了，该运动的物体 结束运动    
+	     让多个物体的运动互不干扰，也就是让每一个物体都有自己的定时器 ，将定时器作为某个对象的属性
+	 */
+</script>

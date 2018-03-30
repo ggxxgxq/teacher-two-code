@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*var fun = function(){
+		alert("匿名函数");
+	}*/
+	
+	//将一个匿名函数 用小括号括起来  后面加一个小括号  表示匿名函数的自执行
+	/*(function (){
+		alert("匿名函数");
+	})();*/
+	
+	//带参数的匿名函数自执行  
+	/*(function (a,b){
+		alert(a+b);
+	})(5,6);*/
+	
+	//有返回值的匿名函数的自执行
+	/*var res = (function (a,b){
+		return a>b?a:b;
+	})(4,3);
+	alert( res );*/
+	
+	//将一个匿名函数 赋值给一个表达式 ，在该匿名函数后加一个小括号 ，表示匿名函数自执行
+	var fn = function(){
+		//alert( "匿名函数" );
+		return 23;
+	}();
+	 
+	//alert( fn );
+</script>

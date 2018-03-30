@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var str = "我有一个活泼可爱的女朋友~~~";
+	var str2 = new String("她时而天真，时而认真~~~");
+	//alert( typeof str );
+	//alert( typeof str2 );
+	function fnCharAt(){
+		//alert( str.charAt(3) );
+		//alert( str[3] )
+		var str = "hello";
+		//alert( str.charCodeAt(2) );
+	 
+		//alert( String.fromCharCode(97) );
+	}
+	 //fnCharAt();
+	
+	function fnIndexOf(){
+		var str = "helloworld";
+		//alert( str.indexOf("o") );
+		//alert( str.lastIndexOf("o") );
+	}
+	//fnIndexOf();
+	
+	function fnSubstr(){
+		var str = "helloworld"; // 
+		var res = str.substr(2);
+		console.log( res );//lloworld
+		
+		var res2 = str.substr(2,5);
+		console.log( res2 ); // llowo
+		
+		var res3 = str.substring(2,5);
+		console.log(res3);//llo
+	}
+	//fnSubstr();
+	
+	//字符串转数组
+	function fnSplit(){
+		var str = "what are you doing?";
+		//str.split(str的子串);
+		var arr = str.split(" ");
+		console.log( arr );
+		
+		var str2 = "http://www.xx.com?uname=lce&pwd=111";
+		//取出  lce  和  111
+		var _str = str2.split("?")[1];// "uname=lce&pwd=111"
+		var arr = _str.split("&");//["uname=lce","pwd=111"]
+		var uname = arr[0].split("=")[1];
+		var upwd = arr[1].split("=")[1];
+		console.log(uname,upwd);
+	}
+	//fnSplit();
+	
+	function fnReplace(){
+		var str = "hello  tmd  tmd world tmd";
+		//var _str = str.replace( "tmd","*" );
+		//alert( _str );
+		
+		//全局替换 ：  split  join
+		alert( str.split("tmd").join("") )
+		
+		//alert( str.toUpperCase() );
+	}
+	fnReplace();
+</script>

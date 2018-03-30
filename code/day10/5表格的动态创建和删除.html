@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		行：<input type="text" id="row"/>
+		列：<input type="text" id="col" />
+		<input type="button" id="btn" value="创建表格" />
+		<div id="d"></div>
+	</body>
+</html>
+<script src="public.js"></script>
+<script>
+	$id("btn").onclick = function(){
+		//清空div的内容
+		$id("d").innerHTML = "";
+		var txtRow = $id("row").value;
+		var txtCol = $id("col").value;
+		//非空判断
+		//数字判断
+		var tab = createEle("table");
+		tab.border = 1;
+		$id("d").appendChild( tab );
+		for( var i = 1 ; i <= txtRow ; i++ ){
+			var tr = createEle("tr");
+			tab.appendChild( tr );
+			for( var j = 1 ; j <= txtCol ; j++){
+				var td = createEle("td");
+				td.innerHTML = rand(1,100);
+				td.style.background = getColor();
+				tr.appendChild(td);
+			}
+			//加一列  删除
+			var endTd = createEle("td");
+			endTd.innerHTML = "<input class='del' type='button' value='删除'>";
+			tr.appendChild(endTd);
+		}
+		
+		//找到所有的删除按钮
+		var obtns = document.getElementsByClassName("del");
+		for( var i = 0 ; i < obtns.length ; i++ ){
+			obtns[i].onclick = function(){
+				//删除当前按钮所在的行
+				if( confirm("确定要删除么？") ){//确定
+					this.parentNode.parentNode.remove();
+				}
+			}
+		}
+	}
+</script>

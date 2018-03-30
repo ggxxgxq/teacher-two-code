@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			margin: 200px;
+			opacity: .3;
+		}
+ 
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script>
+	//鼠标移入  让div的透明度变成1  离开恢复到0.3
+	var oDiv = document.getElementById("box");
+	oDiv.onmouseover = function(){
+		startMove(100);
+	}
+	oDiv.onmouseout = function(){
+		startMove(30);
+	}
+	var timer = null;
+	var alpah = 30;
+	function startMove(target){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var speed = target - alpah > 0 ? 1 : -1; 
+			if( alpah == target ){
+				clearInterval(timer);
+			}else{
+				alpah = alpah + speed;
+				oDiv.style.opacity = alpah/100;
+			}
+		},30)
+	}
+</script>

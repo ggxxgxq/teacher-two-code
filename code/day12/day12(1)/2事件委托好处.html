@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="创建li" id="btn" />
+		<ul id = "u">
+			<li>兄弟多个1</li>
+			<li>兄弟多个2</li>
+			<li>兄弟多个3</li>
+			<li>兄弟多个4</li>
+			<li>兄弟多个5</li>
+			<li>兄弟多个6</li>
+			<li>兄弟多个7</li>
+			<li>兄弟多个8</li>
+			<li>兄弟多个9</li>
+			<li>兄弟多个10</li>
+		</ul>
+	</body>
+</html>
+<script>
+	//为每一个li添加一个onclick 事件   将li的字体变大
+	var oUl = document.getElementById("u");
+	var oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		//点击按钮创建一个li对象
+		var oLi = document.createElement("li");
+		oLi.innerHTML = "最后一个兄弟";
+		oUl.appendChild( oLi );
+	}
+	
+	oUl.onclick = function(e){
+		var e = e || event;
+		//操作当前点击的li的字体 
+		// 获取事件源  
+		var target = e.target || e.srcElement;
+		if( target.nodeName.toLowerCase() == "li" ){
+			target.style.fontSize = "25px";
+		}
+	}
+</script>

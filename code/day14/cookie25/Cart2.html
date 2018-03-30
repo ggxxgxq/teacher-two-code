@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<style>
+		 span{
+		 	padding: 10px;
+		 }
+		 li{
+			list-style:none;
+		 }
+		 li span{
+			width:150px;
+			display:inline-block;
+			text-align:center;
+		 }
+	</style>
+	<script>
+		
+	</script>
+</head>
+<body bgcolor="pink">
+	<ul id="demo">
+		<li><span>编号</span><span>名称</span><span>价格</span></li>				
+	</ul>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	总金额 ：<input type="text" id="t"><input type="button" value="点击结算" id="btn"/>
+</body>
+</html>
+<script src="myCookie.js"></script>
+<script>
+	//页面加载  取出cookie数据
+	window.onload = function(){
+		var oUl = document.getElementById("demo");
+		var oBtn = document.getElementById("btn");
+		var oTxt = document.getElementById("t");
+		var str = getCookie("prolist");
+		var arr = JSON.parse( str );
+		var html = "";
+		var sum = 0;
+		for( var i = 0 ; i < arr.length ; i++ ){
+			sum += Number( arr[i].price ) ;
+			html += `<li><span>${ arr[i].pid }</span><span>${ arr[i].pname }</span><span>${ arr[i].price }</span></li>`;
+		}
+		oUl.innerHTML += html;
+		
+		oBtn.onclick = function(){
+			oTxt.value = sum;
+		}
+	}
+</script>

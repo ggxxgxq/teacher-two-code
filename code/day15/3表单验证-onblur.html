@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="success.html">
+			用户名 ：<input type="text" id="uname"/><span id="s1"></span><br>
+			密码 ：    <input type="text" id="upwd" /><span id="s2"></span><br>
+			爱好 ： 
+				<input type="checkbox" class = "h"/>篮球
+				<input type="checkbox" class = "h"/>足球
+				<input type="checkbox" class = "h"/>棒球
+				<input type="checkbox" class = "h"/>铅球<span id="s3"></span><br>
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+</html>
+<script src = "out.js"></script>
+<script>
+	// onsubmit   表单提交事件
+	var oForm = document.getElementsByTagName("form")[0];
+	oForm.onsubmit = function(){
+		//验证每一个表单项是否符合规范    验证每一个表单项的开关变量是否都是true  都是true  提交成功
+		if( flagName && flagPwd && hobby() ){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	//每一个表单项都有一个onblur事件  失去焦点时   判断输入的数据是否合法
+	// 如果所有的表单项都合法  才可以提交
+	//用户名验证
+	var flagName = null;
+	$id("uname").onblur = function(){
+		var reg = /^\w{3,6}$/;
+		var strUname = $id("uname").value;
+		if( !reg.test(strUname) ){ //如果不符合  
+			flagName = false;
+			$id("s1").innerHTML = "用户名不合法，应在在3--6个字符之间";
+		}else{
+			flagName = true;
+			$id("s1").innerHTML = "正确";
+		}
+	}
+	
+	var flagPwd = null;
+	$id("upwd").onblur = function(){
+		var reg = /^.{6,}$/;
+		var strPwd = $id("upwd").value;
+		if( !reg.test( strPwd ) ){
+			flagPwd = false;
+			$id("s2").innerHTML = "密码不合法，至少6位字符";
+		}else{
+			flagPwd = true;
+			$id("s2").innerHTML = "正确";
+		}
+	}
+	
+	//爱好至少选择两项 : 通过 一个变量记录被选中的复选框的个数  如果个数大于等于2   正确
+	function hobby(){
+		var count = 0;
+		var hs = document.getElementsByClassName("h");
+		for( var i = 0 ; i < hs.length ; i++ ){
+			if( hs[i].checked ){
+				count++;
+			}
+		}
+		if( count >= 2 ){
+			return true;
+		}else{
+			$id("s3").innerHTML = "至少选择两项";
+			return false;
+		}
+	}
+</script>

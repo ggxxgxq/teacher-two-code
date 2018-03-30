@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			margin-bottom: 10px;
+			border:1px solid red;
+			padding: 5px;
+		}
+	</style>
+	<body>
+		<div id="b1"></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<script>
+	//var divs = document.getElementsByTagName("div");
+	var obj = document.getElementById("b1")
+	//获取第一个div的实际宽度
+	//alert( window.getComputedStyle(divs[0],false)["width"] )
+	//alert( obj.currentStyle["width"] );
+	//alert( getComputedStyle );
+	/*if( window.getComputedStyle ){
+		alert( window.getComputedStyle(obj,false)["width"] );
+	}else{
+		alert( obj.currentStyle["width"] );
+	}*/
+	
+	//获取非行内元素样式
+	function getStyle(obj,attr){ //obj 操作对象  attr操作属性
+		if( window.getComputedStyle ){
+			return window.getComputedStyle(obj,false)[attr];
+		}else{
+			return obj.currentStyle[attr];
+		}
+	}
+	alert( getStyle( obj,"width" ) );
+</script>

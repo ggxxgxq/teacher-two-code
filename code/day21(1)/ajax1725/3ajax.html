@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value= "获取服务器数据" id="btn"/>
+		<ul id="userlist"></ul>
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	var oUl = document.getElementById("userlist");
+	//点击按钮  获取服务器的数据
+	oBtn.onclick = function(){
+		//获取服务器的data.json中的数据 并将数据渲染到页面上
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		ajax.open("GET" , "http://127.0.0.1/ajax1725/data.json");
+		
+		ajax.send();
+		
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				//alert(typeof ajax.responseText );
+				var arr = JSON.parse( ajax.responseText );
+				//var arr = eval( ajax.responseText );
+				var str = "";
+				for( var i = 0 ; i < arr.length ; i++ ){
+					str += `<li>编号:${ arr[i].userId } -- 用户名:${ arr[i].userName } -- 密码:${ arr[i].userPwd }</li>`;
+				}
+				oUl.innerHTML = str;
+			}
+		}
+	}
+</script>

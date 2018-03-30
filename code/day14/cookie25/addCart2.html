@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<style>
+		 span{
+		 	padding: 10px;
+		 }
+		 li{
+			list-style:none;
+			
+		 }
+		 li span{
+			width:150px;
+			display:inline-block;
+			text-align:center;
+		 }
+	</style>
+	<script>
+		
+	</script>
+</head>
+<body bgColor="pink">
+	   <ul>
+			<li><span>名称</span><span>单价</span><span><a href="javascript:;" class="addMe">操作</a></span></li>	
+			<li><span>小米</span><span>2313</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>红米</span><span>1234</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>纸尿裤</span><span>453</span><span><a href="javascript:;" class="addMe">加入购物车</a></span></li>	
+			<li><span>水杯</span><span>34</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>三只小熊</span><span>455</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>大礼包</span><span>666</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+			<li><span>太阳镜</span><span>457</span><span><a href="javascript:void(0)" class="addMe">加入购物车</a></span></li>	
+		</ul>
+		<a href="Cart2.html" style="margin-left:90px;">查看购物车</a>
+</body>
+</html>
+<script src="myCookie.js"></script> 
+<script>
+	//点击加入购物车  获取 商品名称  和价格  并将该商品存入到一个json中 再将这个json  存入到 数组中
+	var oUl = document.getElementsByTagName("ul")[0];
+	var arr = [];//存放多个商品对象
+	var id = 1;
+	oUl.onclick = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.className == "addMe" ){
+			var proId = id++;
+			var proName = target.parentNode.parentNode.children[0].innerHTML;
+			var proPrice = target.parentNode.parentNode.children[1].innerHTML;
+			var json = {
+				"pid":proId,
+				"pname":proName,
+				"price":proPrice
+			}
+			arr.push( json );//将某个商品信息存入到数组中
+			//将数组存入到cookie  
+			document.cookie = "prolist=" + JSON.stringify( arr );
+			console.log( document.cookie );
+		}
+	}
+</script>

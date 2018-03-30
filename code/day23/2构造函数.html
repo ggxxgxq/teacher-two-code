@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//创建一个构造函数
+	function Animal(name,age){
+		//为new出来的对象创建属性和功能
+		this.name = name;
+		this.age = age;
+		this.eat = function(){
+			return this.name + "在吃饭...";
+		}
+	}
+	function Student(name,score,age){
+		this.name = name;
+		this.score = score;
+		this.age = age;
+		this.study = function(){
+			return this.name + "在学习...";
+		}
+	}
+	var animal = new Animal("小白");
+	//alert( animal.name );
+	var animal2 = new Animal("大白");
+	//alert( animal.eat() );
+	//alert( typeof animal );
+	var stu = new Student("小明",90,18);
+	
+	//判断stu对象属于哪一个类
+	//alert( stu instanceof Animal);//false
+	//alert( stu instanceof Student);//true
+	
+	alert( animal2.eat ==  animal.eat );
+</script>

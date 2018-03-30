@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	for( var i = 1 ; i <= 100 ; i++ ){
+		//console.log( Math.round( Math.random() )  );//[0,1]
+		//console.log( Math.round( Math.random()*5 )  );//0-5
+		//console.log( Math.round( Math.random()*4 + 1 )  );//[1,5]  
+		//console.log( Math.round( Math.random()*80 + 20 ) );//[20,100]
+		console.log( rand(3,15) );
+	}
+	
+	function rand(min,max){
+		return Math.round( Math.random()*(max-min) + min );
+	}
+</script>

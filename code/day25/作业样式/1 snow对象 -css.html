@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 1000px;
+            height: 600px;
+            background: #000000;
+            border: 5px solid red;
+            margin: 20px auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script src="../../public.js"></script>
+<script>
+	
+	window.onload = function(){
+		setInterval(function(){
+			new Snow().init().move();
+		},500)
+	}
+    function Snow(){
+    	this.img = createEle("img");
+    	this.bg = $id("box");
+    	this.init = function(){
+    		this.bg.appendChild(this.img);
+    		this.img.src = "img/snow.png";
+    		this.img.style.position = "absolute";
+    		this.img.style.width = this.img.style.height = rand(5,20) + "px";
+    		this.img.style.left = rand(0,this.bg.offsetWidth-this.img.offsetWidth)+"px";
+    		this.img.style.top = -this.img.offsetHeight + "px";
+    		return this;
+    	}
+    	this.move = function(){
+    		this.speedX = -rand(1,5);
+    		this.speedY = rand(1,5);
+    		this.timer = setInterval(function(){
+    			this.img.style.left = this.img.offsetLeft + this.speedX + "px";
+    			this.img.style.top = this.img.offsetTop + this.speedY + "px";
+    			
+    			if( this.img.offsetLeft<-this.img.offsetWidth || this.img.offsetTop>this.bg.offsetHeight ){
+    				clearInterval(this.timer);
+    				this.img.remove();
+    			}
+    		}.bind(this),30)
+    	}
+    }
+</script>

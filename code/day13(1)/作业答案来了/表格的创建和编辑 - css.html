@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>		
+		#detail{
+			width:200px;
+			height:200px;
+			border:1px solid black;		
+			display :none;
+			position:absolute;
+			left:500px;
+			top:300px;
+			background:#fff;
+		}
+	</style>
+	<body>
+		标题：<input type="text" id="topic_name" size=60/><br>
+		内容：<input type="text" id="topic_content" size=60/><br>
+		作者：<input type="text" id="author" size=60/><br>
+		<button id="saveBtn">保存</button>
+		<table id="tab" border=1 width=500>
+			<tr>
+				<th>ID</th><th>帖子名称</th><th>内容预览</th><th>发布时间</th><th>作者</th><th>操作</th>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td name="option"><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+		<table>
+		<div id="detail"></div>
+	</body>	
+</html>
+<script src="out.js"></script>
+<script> 
+	//添加 
+	$id("saveBtn").onclick = function(){
+		var oTr = $id("tab").children[0].children[1].cloneNode(true);
+		oTr.children[1].innerHTML = $id("topic_name").value;
+		oTr.children[2].innerHTML = $id("topic_content").value;
+		oTr.children[4].innerHTML = $id("author").value;
+		$id("tab").children[0].appendChild(oTr);
+	}
+	//委托实现为每一个td添加一个onclick事件
+	$id("tab").onclick = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName == "TD" ){
+			var opt = createEle("input");
+			opt.type = "text";
+			opt.value = target.innerHTML;
+			target.innerHTML = "";
+			target.appendChild(opt);
+			opt.focus();//将光标自动聚焦到文本框上
+			
+			//失去焦点   将文本框的内容回填到表格中
+			opt.onblur = function(){
+				target.innerHTML = opt.value;
+			}
+		}
+	}
+	//为每一个超链接  查看详情  添加单击事件  委托
+	$id("tab").addEventListener("click",function(e){
+		var e = e || event;
+		e.stopPropagation();
+		var target = e.target || e.srcElement;
+		if( target.name == "detail" ){
+			$id("detail").style.display = "block";
+			$id("detail").style.left = e.pageX + "px";
+			$id("detail").style.top = e.pageY + "px";
+			var author = target.parentNode.parentNode.children[4].innerHTML;
+			$id("detail").innerHTML = "作者：" + author;
+		}
+	})
+	//点击文档 隐藏详情
+	document.onclick = function(){
+		$id("detail").style.display = "none";
+	}
+	//删除
+	$id("tab").addEventListener("click",function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.className == "delbtn" ){
+			 if( confirm("确定要删除么？") ){
+			 	target.parentNode.parentNode.remove();
+			 }
+		}
+	})
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<div>
+				<p>孩子多个1</p>
+				<p>孩子多个2</p>
+				<p>孩子多个3</p>
+			</div>
+			<p>孩子多个4</p>
+			<p>孩子多个5</p>
+		</div>
+		<p>孩子多个6</p>
+		<p>孩子多个7</p>
+		
+	</body>
+</html>
+<script>
+	$(function(){
+		//$("#box p").css("background","orange");
+		//$("#box>p").css("background","orange");
+		//$("#box+p").css("background","orangered");
+		$("#box~p").css("background","orangered");
+	})
+</script>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!--http://pangmeihui.chenjunbo.xin:18080/blog/open/list?type=article&limit=10&offset=0-->
+<script>
+	window.onload = function(){
+		
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET","http://pangmeihui.chenjunbo.xin:18080/blog/open/list?type=article&limit=10&offset=0")
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4 && ajax.status ==200){
+				document.write(ajax.responseText);
+			}
+		}
+	}
+</script>

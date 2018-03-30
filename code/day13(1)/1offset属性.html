@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width:100px;
+			height:100px;
+			background:blue;
+			border:1px solid red;
+			padding:10px;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script>
+	//获取图片的宽度和高度
+	var oDiv = document.getElementById("box");
+	//alert(oDiv.style.width)
+	console.log( oDiv.offsetWidth );
+</script>

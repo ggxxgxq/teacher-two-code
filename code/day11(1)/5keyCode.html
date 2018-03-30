@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*document.onkeyup = function(e){
+		var e = e || event;
+		alert( e.keyCode );
+	}*/
+	//当键盘按下时 会获取到功能键的键值
+	document.onkeypress = function(e){
+		var e = e || event;
+		//如果按下的是ctrl + 回车 就发送
+		if( e.ctrlKey && e.keyCode == 10 || e.keyCode == 13  ){
+			alert("发送");
+		}
+	}
+	
+	
+</script>

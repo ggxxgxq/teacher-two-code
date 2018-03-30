@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//定义一个构造函数
+	class Animal{
+		//为new出来的对象定义属性
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		//为new出来的对象定义方法  方法名(){......}
+		eat(){
+			console.log("吃饭");
+		}
+		running(){
+			console.log("奔跑");
+		}
+	}
+	
+	var a1 = new Animal("小白",2);
+	var a2 = new Animal("大黄",3);
+	
+	a2.running();
+</script>

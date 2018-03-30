@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="设置cookie" id="btn1" />
+		<input type="button" value="删除cookie" id="btn" />
+	</body>
+</html>
+<script>
+	var oBtnDel = document.getElementById("btn");
+	var oBtnSave = document.getElementById("btn1");
+	oBtnSave.onclick = function(){
+		var d = new Date();
+		d.setDate( d.getDate() + 1 );
+		alert( d );
+		document.cookie = "uname=lichune;expires="+d;
+	}
+	oBtnDel.onclick = function(){
+		document.cookie = "uname=lichune;expires=-1";
+	}
+</script>

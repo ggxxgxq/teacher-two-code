@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			position: absolute;
+			left: 0;
+			top: 100px;
+		}
+		#btn{
+			margin: 50px;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>
+<script>
+	//点击按钮  让div匀速向右移动300px后停止运动
+	 
+	var oDiv = document.getElementById("box");
+	oDiv.onmouseover = function(){
+		startMove(300);
+	}
+	oDiv.onmouseout = function(){
+		startMove(100);
+	}
+	var timer = null;
+	function startMove(target){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var speed = target - oDiv.offsetWidth > 0 ? 5 : -5;
+			if( oDiv.offsetWidth == target ){
+				clearInterval( timer );
+			}else{
+				oDiv.style.width = oDiv.offsetWidth + speed + "px";
+			}
+		},30)
+	}
+	
+	//  当运动到300px时    停止定时器   程序顺序执行  将left值 加5  变成 305  解决 ： 加一个else阻止后面代码执行
+	//  运动过程中 频繁操作按钮  会使div运动的速度越来越快   解决 ：   每次点击之前先清除定时器 
+</script>

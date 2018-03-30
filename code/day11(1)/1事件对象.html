@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// alert( event );
+	document.onkeyup = function(evt){//参数代表一个事件对象
+		//alert( event );
+		//alert( e );
+		//事件对象的兼容
+		var e = evt || event; //先兼容高版本浏览器
+		alert( e );
+	}
+</script>

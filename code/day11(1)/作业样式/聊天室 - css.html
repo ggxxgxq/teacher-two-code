@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>聊天对话框</title>
+<style type="text/css">
+*{font-size: 14px; padding:0; margin:0;}
+.main{
+	position: relative;
+	margin: 20px auto;
+	border: 1px solid steelblue;
+	width: 430px;
+	height: 400px;
+}
+.msgInput{
+	display: block;
+	width: 406px;
+	height: 60px;
+	margin: 10px auto;
+	
+}
+.sendbtn{
+	position: absolute;
+	width: 100px;
+	height: 29px;
+	bottom: 5px;
+	right: 10px;
+}
+.content{
+	list-style: none;
+	width: 410px;
+	height: 280px;
+	margin: 5px auto;
+	border: 1px dotted #D1D3D6;
+	overflow-y: scroll;
+}
+.msgContent{
+	width:auto;
+	max-width: 250px;
+	height: auto;
+	word-break: break-all;
+	margin: 5px;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.content .left{
+	float: left;
+	text-align: left;
+	background-color: lightgrey;
+	clear: both;
+}
+.content .right{
+	float: right;
+	text-align: right;
+	background-color: yellowgreen;
+	clear: both;
+}
+
+
+</style>
+
+</head>
+
+<body>
+	<div id="main" class="main">
+		<ul id="content" class="content">
+			<li class="msgContent left">hello?</li>
+			<li class="msgContent left">hello</li>
+			<li class="msgContent right">hi</li>
+			<li class="msgContent left">hehe</li>
+			<li class="msgContent left">goodbye</li>
+			<li class="msgContent right">。。。。</li>
+			<li class="msgContent right">sdfasdsadfassdfsdfsdfdsfsdfsdfsdfdfasdffasdfasfdasd fasd fasd fasdfasdfasdf</li>
+		</ul>
+		<textarea id="msg_input" class="msgInput"></textarea>
+		<button id="sendbtn" class="sendbtn">发送</button>
+	</div>
+</body>
+</html>
+<script src="../out.js"></script>
+<script>
+	 	
+	 		$id("sendbtn").onclick = function(){
+	 			var oLi =createEle("li");
+	 	        oLi.innerHTML =$id("msg_input").value;
+	 	       oLi.className="msgContent right";
+	 	       $id("content").appendChild(oLi);
+	 	       oLi.scrollIntoView();
+	 	       
+	 		}
+	 $id("msg_input").onkeypress=function(e){
+	 	var e = e || event;
+	 	if(e.ctrlKey && e.keyCode==10 || e.keyCode==13){
+	 		$id("sendbtn").onclick();
+	 	}
+	 }
+	
+	
+	
+	
+	
+	
+	/*$id("sendbtn").onclick = function(){
+	 	var oli = createEle("li");
+	 	oli.innerHTML = $id("msg_input").value;
+	 	$id("content").appendChild( oli );
+	 	oli.className = "msgContent right";
+	 	//滚动条在最低端显示   
+	 	oli.scrollIntoView();
+	 	
+	 	$id("msg_input").value = "";
+	}
+	/*$id("msg_input").onkeyup = function(e){
+		var e = e || event;
+		if( e.ctrlKey && e.keyCode == 13 ){
+			$id("sendbtn").onclick();
+		}
+	}
+	$id("msg_input").onkeypress = function(e){
+		var e = e || event;
+		if( e.ctrlKey && e.keyCode == 10 ){
+			$id("sendbtn").onclick();
+		}
+	}*/
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id = "u">
+			<li>兄弟多个1</li>
+			<li>兄弟多个2</li>
+			<li>兄弟多个3</li>
+			<li>兄弟多个4</li>
+			<li>兄弟多个5</li>
+			<li>兄弟多个6</li>
+			<li>兄弟多个7</li>
+			<li>兄弟多个8</li>
+			<li>兄弟多个9</li>
+			<li>兄弟多个10</li>
+		</ul>
+	</body>
+</html>
+<script>
+	//为每一个li添加一个onclick 事件   将li的字体变大
+	var oUl = document.getElementById("u");
+	/*oUl.addEventListener("click",function(e){
+		var e = e || event;
+		//操作当前点击的li的字体 
+		// 获取事件源  
+		var target = e.target || e.srcElement;
+		if( target.nodeName.toLowerCase() == "li" ){
+			target.style.fontSize = "25px";
+		}
+	})*/
+	
+	oUl.onclick = function(e){
+		var e = e || event;
+		//操作当前点击的li的字体 
+		// 获取事件源  
+		var target = e.target || e.srcElement;
+		if( target.nodeName.toLowerCase() == "li" ){
+			target.style.fontSize = "25px";
+		}
+	}
+</script>

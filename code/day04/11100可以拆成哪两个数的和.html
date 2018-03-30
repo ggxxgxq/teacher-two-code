@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="outer.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//输出：100 可以拆成哪两个素数的和？
+	// 1 99
+	// 2 98
+	// 3 97    
+	function removeNumber(){
+		//判断i是不是素数 并且 &&  100-i是不是素数 
+		for( var i = 1 ; i <= 50 ; i ++ ){
+			if( isPrimerNumber(i) && isPrimerNumber(100-i) ){
+				console.log( "100可以拆成"+i+"和"+(100-i)+"的和" );
+			}
+		}
+	}
+	removeNumber();
+</script>

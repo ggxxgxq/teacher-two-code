@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script src="../public.js"></script>
+<script type="text/javascript">
+	//this : 指向方法的调用者  或  事件的触发者  
+	//为五个li添加背景色
+	$.fn.extend({
+		setBgColor : function(){ //设置所有行的颜色一致
+			//console.log( this )
+			//this 指向方法的调用者  jq对象
+			this.css("background","pink");
+		},
+		setBgColor2 : function(){ //每一行的颜色都不同
+			this.each(function(){
+				//操作每一行的颜色不一致
+				$(this).css("background",getColor());
+			})
+		},
+		enter : function(opts){ //opts参数是一个对象
+			this.mouseenter(function(){
+				//默认参数 如果用户没有传递参数 就按照默认值走  如果用户传递参数，就按用户传递的值执行
+				var defaults = {
+					"color" : "red",
+					"size" : 20
+				};
+				
+				//参数合并
+				//默认参数 如果用户没有传递参数 就按照默认值走  如果用户传递参数，就按用户传递的值执行
+				var setting = $.extend( defaults , opts );
+				color = $(this).css("backgroundColor");
+				$(this).css({"background":setting.color,"fontSize":setting.size});
+			})
+		},
+		leave : function(){
+			this.mouseleave(function(){
+				$(this).css({"background":color,"fontSize":16})
+			})
+		}
+	})
+	$("li").setBgColor2();
+	$("li").enter({"color":"blue"});
+	$("li").leave();
+	
+	//$.extend({a:1,b:3},{a:2},{b:5,c:7})  合并   {a:2,b:5,c:7}
+	console.log( $.extend({a:1,b:3},{a:2},{b:5,c:7}) );
+</script>

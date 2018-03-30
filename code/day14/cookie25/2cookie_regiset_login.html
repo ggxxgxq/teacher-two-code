@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名： <input type="text" id="uname"/>
+		密码 ：  <input type="text" id="upwd"/>
+		<input type="button" value="注册" id = "register"/>
+		<hr />
+		用户名： <input type="text" id="tname"/>
+		密码 ：  <input type="text" id="tpwd"/>
+		<input type="button" value="登录" id="login"/>
+	</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("register").onclick = function(){
+		//存cookie
+		var uname = $("uname").value;
+		var upwd = $("upwd").value;
+		var d = new Date();
+		d.setDate( d.getDate() + 1 );
+		document.cookie = "username=" + uname + ";expires="+d;
+		document.cookie = "userpwd=" + upwd;
+		alert("注册成功");
+	}
+	$("login").onclick = function(){
+		//取出cookie
+		var str = document.cookie;
+		//"username=lichune; userpwd=lichune"
+		var arr = str.split("; ");
+		for( var i = 0 ; i < arr.length ; i++ ){
+			var item = arr[i].split("=");
+			if( item[0] == "username" ){
+				tname = item[1];//将用户名预存到一个变量中
+			}
+			if( item[0] == "userpwd" ){
+				tpwd = item[1];//将密码预存到变量中
+			}
+		}
+		//获取用户输入的用户名和密码
+		var uname = $("tname").value;
+		var upwd = $("tpwd").value;
+		if( uname == tname && upwd == tpwd ){
+			location.href = "page.html";
+		}else{
+			alert("登录失败");
+		}
+	}
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+			<li>孩子多个6</li>
+		</ul>
+		<div id="box">
+			<div>
+				<p>孩子多个1</p>
+				<p class="pp">孩子多个2</p>
+				<p>孩子多个3</p>
+				<span class="pp">888888888</span>
+			</div>
+			<p>孩子多个4</p>
+			<p>孩子多个5</p>
+		</div>
+		<p>孩子多个6</p>
+		<p class="pp">孩子多个7</p>
+	</body>
+</html>
+<script>
+	//查找p元素上带有.pp 的选择器
+	//$("p.pp").css("background","orange");
+	//$("p").filter(".pp").css("background","blue");
+	$p = $("p").filter(function(index){
+		//return 表达式; 如果表达式的结果为真   就返回了满足某个条件的p元素
+		//console.log(index)
+		//return index == 6;
+		return $("p").eq(index).html() == "孩子多个3";
+	})
+	$p.css("background","red");
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	document.onclick = function(){
+		//点击文档  创建一张图片  如果图片的路径没有问题  就成功加载图片
+		//失败了     就提示加载失败
+		//promise 承诺--加载一张图片
+		var pro = new Promise(function(success,failed){
+			var oImg = document.createElement("img");
+			oImg.src="002.jpg";
+			//图片正确加载  就调用success 
+			oImg.onload = function(){
+				success(this);
+			}
+			//图片如果加载错误 就调用failed方法
+			oImg.onerror = function(){
+				failed("加载失败");
+			}
+		});
+		
+		pro.then(function(msg){
+			//success
+			//alert(msg);
+			//将图片加载到页面上
+			document.body.appendChild(msg);
+		},function(msg){
+			//catch
+			alert(msg);
+		});
+		//pro.catch();
+	}
+</script>

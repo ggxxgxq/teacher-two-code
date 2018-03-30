@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//递归实现 ： 1 + 3 + 5 + ...+ 99
+	function fnSum(n){  //前n项的奇数和
+		if( n == 1 ){
+			return 1;
+		}else{
+			return n + fnSum(n-2);
+		}
+	}
+	//alert( fnSum(99) );
+	// 5 + fnsum(3)   3 + fnsum（1）   fnSum(1)--1
+	// 斐波那契数列 ：0 1 1 2 3 5 8 13 ....
+	//函数功能实现输出斐波那契数列的第n项
+	function fb(n){ //n表示第n项
+		if( n == 1 ){
+			return 0;
+		}else if( n == 2 ){
+			return 1;
+		}else{
+			return fb(n-1) + fb(n-2);
+		}
+	}
+	alert( fb(7) );
+</script>

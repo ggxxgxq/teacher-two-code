@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Father(){
+		this.money = 999999;
+		this.liaomei = function(){
+			console.log("撩妹");
+		}
+	}
+	
+	function Son(){
+		this.parent = Father;
+		this.parent();//调用父类的函数
+		//删除子类的parent属性
+		delete this.parent;
+	}
+	
+	var son = new Son();
+	console.log( son );
+</script>

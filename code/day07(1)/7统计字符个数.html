@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//2、	统计一个字符串中大写字母  小写字母  
+	//    数字以及特殊字符从个数”xdrKJI566$%^”  编程实现
+	function getCount(str){
+		//大写字母 A--Z  小写字母 a-z   charAt()
+		//大写字母   65--90             charCodeAt()
+		var bLetter = 0,sLetter = 0 ,num = 0 , other = 0;
+		for( var i = 0 ; i < str.length ; i++ ){
+			var ch = str.charAt(i);
+			if( ch >= "a" && ch <= "z"){
+				sLetter ++;
+			}else if( ch >= "A" && ch <= "Z" ){
+				bLetter ++;
+			}else if( ch >= "0" && ch <= "9" ){
+				num++;
+			}else{
+				other++;
+			}
+		}
+		console.log( "大写字母：" + bLetter );
+		console.log( "小写字母：" + sLetter );
+		console.log( "数字：" + num );
+		console.log( "特殊字符：" + other );
+	}
+	getCount( "licASDwnwer323$$$334" );
+</script>

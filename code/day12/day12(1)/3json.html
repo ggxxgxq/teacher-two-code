@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*var json = {
+		"uname" : "lichune",
+		"sex" : "女"
+	}
+	alert( json["sex"] );*/
+	//json定义 ：
+	var json = {
+		"pid" : 1,
+		"pname" :"玉米",
+		"price" : 2,
+		"paddr":"东北"
+	}
+	
+	
+	alert( json.attr );
+	//json遍历 ： 
+	/*for( var attr in json ){
+		//console.log( attr );
+		console.log( json[attr] );
+	}*/
+	
+	
+	//json 中存放数组
+	/*var json = {
+        "url" : ["1.jpg","2.jpg"],
+        "con" : ["图片一","图片二"]
+    }
+	//alert( json.url[0] );
+	for( var attr in json ){
+		//attr : url  con 
+		for( var i = 0 ; i <  json[attr].length ; i++ ){
+			console.log( json[attr][i] );
+		}
+	}*/
+	
+	//数组中存放json
+	var arr = [
+				{"uname":"admin","pwd":"111"},
+				{"uname":"jack","pwd":"222"},
+				{"uname":"lily","pwd":"333"}
+			  ]
+	//alert( arr[0] );
+	for( var i = 0 ; i < arr.length ; i++ ){
+		for( var attr in arr[i] ){
+			console.log( arr[i][attr] );
+		}
+	}
+</script>

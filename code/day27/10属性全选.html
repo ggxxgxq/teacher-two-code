@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.js"></script>
+	 
+	<body>
+		<ul>
+			<li class="d">孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+			<li>孩子多个6</li>
+			<li>孩子多个7</li>
+			<li>孩子多个8</li>
+		</ul>
+		<input type="checkbox" id="aa" />全选
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h" />
+		<input type="checkbox" name="h" />
+		<input type="checkbox" name="h" />
+		<input type="checkbox" name="h"/>
+		<input type="checkbox" name="h"/>
+	</body>
+</html>
+<script>
+	//为li添加自定义属性值
+	//$("li").attr("level","aa");
+	//alert( $("li").eq(2).attr("level") )
+	//alert( $("li").eq(0).attr("class") );
+	//点击checkbox 获取checked值
+	$("#aa").click(function(){
+		//alert( $(this).prop("checked") );
+		//让后面的所有复选框和当前点击的复选框的checked值保持一致
+		$("input[name=h]").prop("checked" , $(this).prop("checked") );
+	})
+</script>

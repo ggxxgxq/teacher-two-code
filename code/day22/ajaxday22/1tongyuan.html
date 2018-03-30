@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="请求服务器数据" id="btn" />
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET","http://localhost/ajaxday22/data.json");
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				alert( ajax.responseText );
+			}
+		}
+	}
+</script>

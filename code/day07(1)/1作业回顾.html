@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//2、	编写函数has(arr , 60) 
+	//判断数组中是否存在60这个元素，返回布尔类型
+	function has(arr,num){
+		for( var i = 0 ; i < arr.length ; i++ ){
+			if( arr[i] == num ){
+				return true;//存在
+			}
+		}
+		return false;//不存在
+	}
+	var res = has( [67,45,6,60],600 );
+	//alert( res );
+	/*
+	 3、	编写函数norepeat(arr) 将数组的重复元素去掉，
+	 并返回新的数组 (此题为13K)
+	[1,2,1,34,2,5,6,2]
+	去重后：
+	[1,2,34,5,6]
+	 */
+	//方案一：判断原数组中的某个数在新数组中是否存在  
+	//        如果不存在就将这个数存入到新数组中
+	function noRepeat(arr){
+		var newArr = [];//新数组
+		for( var i = 0 ; i < arr.length ; i++ ){
+			if( !has( newArr,arr[i] ) ){ //不存在
+				//newArr.push( arr[i] );
+				newArr[newArr.length] = arr[i];
+			}
+		}
+		return newArr;
+	}
+	var arr = [1,2,1,34,2,5,6,2];
+	var res = noRepeat( arr );
+	//alert( res );
+	//方案二、先将数组按照顺序排好，然后相邻的两个数比较
+	//  如果相邻的两个数不相等，就将前一个数存入到数组中
+	function noRepeat2(arr){
+		var newArr = [];
+		for( var i = 0 ; i < arr.length ; i ++ ){
+			if( arr[i] != arr[i+1] ){
+				newArr.push( arr[i] );
+			}
+		}
+		return newArr;
+	}
+	var arr2 = [1,1,2,2,5,5,6,7,8,8];
+	var result = noRepeat2(arr2);
+	//alert( result );
+	
+	
+	/*
+	 4、	有一个从小到大排好序的数组。现输入一个数，
+	 要求按原来的规律将它插入数组中。
+	例如  原数组  [3,10,49,89,100] 
+	 插入一个数 15   
+	   新数组为   [3,10,15,49,89,100]
+	 * */
+	//思路 ： 先比较大小，满足 ： arr[i] > num 目的找到num位置  
+	//  
+	function addNum(arr,num){
+		var index = arr.length; //变量代表num所在的位置
+		for( var i = 0 ; i < arr.length ; i++ ){
+			if( arr[i] > num ){
+				index = i;
+				break;
+			}
+		}
+		//将num添加到index位置
+		arr.splice( index , 0 , num );
+		return arr;
+	}
+	var brr = [3,10,49,89,100];
+	var res = addNum( brr , 150 );
+	//alert( brr );
+	
+	/*
+	 6、	某个公司采用公用电话传递数据，数据是四位的整数，
+	 在传递过程中是加密的，加密规则如下：
+	每位数字都加上5,然后用除以10的余数代替该数字，
+	再将第一位和第四位交换，第二位和第三位交换，
+	 请编写一个函数，传入原文，输出密文
+	
+	2356 --- > [1,0,8,7]  1087
+	 * */
+	function getCode(num){
+		var arr = [];//用来存放密文
+		for( var i = 0 ; i < 4 ; i++ ){
+			arr[i] = num%10;//arr[0] = 6
+			arr[i] += 5; // arr[0] = 11
+			arr[i] %= 10; // arr[0] = 1
+			num =parseInt( num/10 ) ;
+		}
+		return arr.join("");
+	}
+	var res = getCode( 2356 );
+	alert( res );
+</script>

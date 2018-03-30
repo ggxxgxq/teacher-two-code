@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>兄弟多个1</li>
+			<li>兄弟多个2</li>
+			<li>兄弟多个3</li>
+			<li>兄弟多个4</li>
+			<li>兄弟多个5</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	确定构造函数 ：  HighLight 
+	确定属性 ： 要操作的元素   5个li
+	确定具体功能 （在构造函数上new出来的对象的具体的功能） ：  颜色设置            鼠标操作      加载 隔行颜色变色
+	 */
+	window.onload = function(){
+		var hh = new HighLight();
+		hh.init();
+	}
+	function HighLight(){
+		this.list = document.getElementsByTagName("li");
+		//入口方法
+		this.init = function(){
+			var that = this;
+			//隔行变色
+			for( var i = 0 ; i < this.list.length ; i++ ){
+				if( i%2 ){
+					this.setColor( this.list[i] , "pink" );
+				}else{
+					this.setColor( this.list[i] , "orange" );
+				}
+				//为所有的li添加鼠标移入和移出功能
+				this.list[i].onmouseover = function(){
+					//鼠标移入时  记录当前行的颜色 
+					//动态的为new出来的对象添加一个color属性 
+					//that.color = this.style.backgroundColor; 
+					that.color = that.setColor(this); 
+					//this 指向事件的触发者
+					that.setColor( this , "skyblue" );
+				}
+				this.list[i].onmouseout = function(){
+					that.setColor( this , that.color );
+				}
+			}
+		}
+		//颜色设置
+		this.setColor = function(obj,color){
+			if( color ){
+				obj.style.backgroundColor = color;
+			}
+			return obj.style.backgroundColor;//返回当前obj的颜色值
+		}
+	}
+</script>

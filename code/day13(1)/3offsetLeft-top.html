@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#dd{
+			width:500px;
+			height:500px;
+			background:orange;
+			position:relative;
+			margin:100px;
+		}
+		#parent{
+			width:400px;
+			height:400px;
+			background:blue;
+			margin:200px;
+		}
+		#son{
+			width:200px;
+			height:200px;
+			background:red;
+			position:absolute;
+			left : 400px;
+			top : 200px;
+		}
+	</style>
+	<body>
+		<div id="dd">
+			<div id="parent">
+				<div id="son"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var son = document.getElementById("son");
+	var parent= document.getElementById("parent");
+	console.log( parent.offsetLeft );
+</script>

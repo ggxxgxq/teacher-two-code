@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*
+	 1、	函数实现：输出1—3之间能组成的奇数个数，并输出这些数
+	要求 ： 组成的数是一个两位数，个位数！=十位数
+	组成： 13  21   23  31  共4个
+	 * */
+	function fnOdd(){
+		var count = 0;
+		for( var  i = 1 ; i <= 3 ; i++ ){ //十位
+			for( var j = 1 ; j <= 3 ; j++ ){ //个位
+				if( i != j ){
+					var n = "" + i + j; // i * 10 + j
+					if( n % 2 ){
+						count ++;
+						console.log( n );
+					}
+				}
+			}
+		}
+		return count;
+	}
+	/*var res = fnOdd();
+	console.log(res);*/
+	
+	/*
+	 2、	编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,
+	    当输入n为奇数时，调用函数求1+1/3+...+1/n
+	 * */
+	function fnSum(n){
+		//如果n不是一个数字  就返回 什么也不做
+		if( typeof n != "number" ){
+			return "参数错误";
+		}
+		if( n % 2 ){ //n是奇数
+			var i = 1;
+		}else{
+			var i = 2;
+		}
+		var sum = 0;
+		while( i <= n ){
+			sum += 1/i;
+			i += 2;
+		}
+		return sum;
+	}
+	//alert( fnSum("s3") );
+	
+	//判断一个数是不是完数
+	function isPerfectNumber(n){
+		//累加除了本身之外的因子和  如果因子和 == 该数本身 就是完数
+		var sum = 0;
+		for( var i = 1 ; i < n; i ++ ){
+			if( n%i == 0 ){
+				sum += i;
+			}
+		}
+		if( sum == n ){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function getAll(){
+		for( var num = 2 ; num <= 10000; num++ ){
+			if( isPerfectNumber(num) ){
+				console.log( num );
+			}
+		}
+	}
+	//getAll();
+	
+	/*
+	 编写一个函数 ：实现计算任意一个数的各个位数的和 
+	例如 ：  234  位数和为  9
+	 */
+	function getSum( num ){
+		var sum = 0;
+		//得到各个位数 累加
+		while( num != 0 ){
+			var digit = num%10;
+			sum += digit;
+			num = parseInt( num/10 );
+		}
+		return sum;
+	}
+	//alert( getSum(123) );
+	
+	function fnPrint(){
+		//上6行  下5行  
+		//等腰三角形的每一行的第一列和最后一列打印*
+		for( var i = 1 ; i <= 6 ; i++ ){
+			for( var j = 1 ; j <= 6-i; j ++ ){
+				document.write("&ensp;");
+			}
+			for( var j = 1 ; j <= 2*i - 1 ; j++ ){
+				if( j == 1 || j == 2*i-1  ){
+					document.write("*");
+				}else{
+					document.write("&ensp;");
+				}
+			}
+			document.write( "<br>" );
+		}
+		for( var i = 1 ; i <= 5 ; i++ ){
+			for( var j = 1 ; j <= i; j ++ ){
+				document.write("&ensp;");
+			}
+			for( var j = 1 ; j <= 11 - 2*i ; j++ ){
+				if( j == 1 || j == 11 - 2*i  ){
+					document.write("*");
+				}else{
+					document.write("&ensp;");
+				}
+			}
+			document.write( "<br>" );
+		}
+	}
+	fnPrint();
+</script>

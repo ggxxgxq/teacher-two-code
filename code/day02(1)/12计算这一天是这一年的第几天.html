@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		年： <input type="text" id="y"/>
+		月： <input type="text" id="m" />
+		日： <input type="text" id="d" />
+		结果： <input type="text" id="res" />
+		<input type="button" value="计算" id="btn" />
+	</body>
+</html>
+<script>
+	//要做事   先找人 对象object 
+	var oBtn =  document.getElementById("btn");//按钮
+	var oTxtYear = document.getElementById("y");//年
+	var oTxtMonth = document.getElementById("m");//年
+	var oTxtDate = document.getElementById("d");//年
+	var oTxtRes = document.getElementById("res");//年
+	//1 为按钮添加点击事件  onclick
+	oBtn.onclick = function(){
+		//2 获取 年  月  日 
+		var y = oTxtYear.value;
+		var m =parseInt( oTxtMonth.value ) ;
+		var d =parseInt( oTxtDate.value ) ;
+		//3 程序实现计算这一天是这一年的第几天
+		var sum = 0;//累加天数
+		switch( m ){
+			case 12 : sum += 30;//11
+			case 11 : sum += 31;
+			case 10 : sum += 30;
+			case 9 : sum += 31;
+			case 8 : sum += 31;
+			case 7 : sum += 30;
+			case 6 : sum += 31;
+			case 5 : sum += 30;
+			case 4 : sum += 31;
+			case 3 : {
+				y%4==0&&y%100!=0||y%400==0 ? sum+=29 : sum += 28;
+			}
+			case 2 : sum += 31;
+			case 1 : sum += d;
+		}
+		//4 将结果回填到文本框中
+		oTxtRes.value = sum;
+	}
+	
+	/*var y = 2017,m = 12,d = 12;//  2--29
+	
+	alert("这一天是这一年的第"+sum+"天");*/
+	 
+</script>

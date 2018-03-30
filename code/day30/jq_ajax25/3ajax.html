@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+	/*$.ajax({
+		url:"data.json",
+		type : "get",
+		dataType: "json",
+		data : { "uname":"lichune" },
+		success : function(msg){
+			console.log( msg );
+		}
+	})*/
+	
+	
+	$.ajax({
+		url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+"li"+"&cb=fn",
+		type : "get",
+		dataType: "jsonp",//跨域
+		jsonCallback : "fn"
+	})
+	
+	function fn(res){
+		console.log( res );
+	}
+</script>

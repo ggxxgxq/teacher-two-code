@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//输入月份，判断当前月份属于哪个季节
+	/*var month =parseInt( prompt( "请输入后一个月份" ) ) ;
+	switch( month ){
+		case 12 :
+		case 1 :
+		case 2 : alert("冬季");break;
+		case 3 : 
+		case 4 : 
+		case 5 : alert("春季");break;
+		case 6 :
+		case 7 : 
+		case 8 : alert("夏季");break;
+		case 9 :
+		case 10 :
+		case 11 : alert("秋季");break;
+	}*/
+	
+	//输入两个数 ，按照从小到大的顺序输出 ？
+	/*var num1 = prompt("请输入第一个数");//34
+	var num2 = prompt("请输入第二个数");//23
+	//如果  num1 > num2 就将两个数进行 交换
+	var temp;
+	if( num1 > num2 ){
+		temp = num1;
+		num1 = num2;
+		num2 = temp;
+	}
+	alert("这两个按照从小到大的顺序输出是：" + num1 + "," + num2);//num1 < num2*/
+	
+	//输入任意三个数，输出最大值？
+	var one = 23,two = 3,three = 78;
+	//首先找到某两个数中的最大数
+	var temp = one > two ? one : two;
+	//再用前两个数中的最大数和第三个数比较 找到最大值
+	var max = temp > three ? temp : three;
+	alert( max );
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//输出100-- 200之间的素数
+	for( var num = 100 ; num <= 200 ; num ++ ){
+		var flag = true;//是素数  每判断一个数时  需要将flag值重置true
+		for( var i = 2 ; i < num ; i++ ){
+			if( num % i == 0 ){//只要满足这个条件 说明num不是素数
+				flag = false;
+				break;
+			}
+		}
+		if( flag ){//通过flag变量的值 控制结果
+			console.log( num + "是素数" );
+		}
+	}
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		详情页
+		<input type="button" value="getCookie" id="btn2"/>
+	</body>
+</html>
+<script>
+	var oGet = document.getElementById("btn2");
+	oGet.onclick = function(){
+		//alert( document.cookie );
+		//"upwd=111; addr=北京; uname=lichune; job=teacher"
+		//取出用户名  ：  lichune    uname
+		var str = document.cookie; 
+		//根据 ; 将字符串拆分成数组
+		var arr = str.split("; ");
+		// ["upwd=111", "addr=北京", "uname=lichune", "job=teacher"]
+		for( var i = 0 ; i < arr.length ; i++ ){
+			var item = arr[i].split("=");
+			if( item[0] == "uname" ){
+				alert( item[1] );
+				break;
+			}
+		}
+	}
+</script>

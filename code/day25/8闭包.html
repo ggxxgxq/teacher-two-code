@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*function fn(){
+		return function(){ //闭包 ： 一个函数可以返回一个匿名函数    这个匿名函数就称为闭包
+			return "hello";
+		}
+	}
+	alert( fn()() ); // function (){ return "hello"; }*/
+	
+	
+	/*function fn(){
+		var num = 10;
+		return function(){//闭包 ： 能够访问一个函数内部的局部变量的函数  就称为闭包
+			return ++num;
+		}
+	}
+	alert( fn()() );*/
+	
+	/*function fun(){
+		var num = 10;
+	}
+	fun();
+	alert( num );*/
+	
+	//闭包好处 ： 闭包可以访问一个函数内部的私有变量
+	//		 闭包可以延长一个局部变量的周期    让一个局部变量长期驻留在内存中
+	function fn(){
+		var num = 10;
+		return function(){
+			return ++num;
+		}
+	}
+	var box = fn();// function (){ return ++num }
+	alert( box() );//11                 
+	alert( box() );//12     
+	alert( box() );//13
+	//js 中有一个垃圾回收机制  将一个变量的值改成 null   
+	box = null;
+//	console.log( box() );
+</script>

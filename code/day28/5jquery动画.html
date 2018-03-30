@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 200px;
+			background: deepskyblue;
+			position:absolute;
+			left:100px;
+			top:200px;
+		}
+	</style>
+	<body>
+		<input type="button" value="show/hide/toggle" />
+		<input type="button" value="slideDown/slideUp/slideToggle" />
+		<input type="button" value="fadeIn/fadeOut/fadeToggle" />
+		<input type="button" value="fadeTo" />
+		<input type="button" value="animate" />
+		<div></div>
+	</body>
+</html>
+<script>
+	$(":button:eq(4)").click(function(){
+		$("div").animate({
+			"width":300,
+			"height":400,
+			"opacity":0.3,
+			"left" : 400,
+			"top" : 400
+		},2000,function(){
+			alert("动画结束了");
+		})
+	})
+	$(":button:eq(3)").click(function(){
+		$("div").fadeTo(0,0.3);
+	})
+	$(":button:eq(2)").click(function(){
+		$("div").fadeToggle(1000);
+	})
+	$(":button:eq(1)").click(function(){
+		$("div").slideToggle(1000);
+	})
+	$(":button:eq(0)").click(function(){
+		$("div").toggle(1000,"linear",function(){
+			alert("动画结束");
+		});
+	})
+</script>

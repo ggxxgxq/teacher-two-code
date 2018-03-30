@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Mx(){
+		this.film = function(){
+			console.log("可以拍电影");
+		}
+	}
+	
+	function Jjr(){
+		this.master = new Mx();
+		//代理对象 负责  实现  对 Mx中某个功能的实现  
+		this.film = function(money){
+			if( money > 1000000 ){
+				//通知主人可以拍电影了
+				this.master.film();
+			}
+		}
+	}
+	var jjr = new Jjr();
+	jjr.film( 800000 );
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: skyblue;
+			margin-bottom: 10px;
+		}
+	</style>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<script>
+	//鼠标移入到某个div上该div加宽到300   离开时 恢复100
+	var divs = document.getElementsByTagName("div");
+	for( var i = 0 ; i < divs.length ; i++ ){
+		divs[i].onmouseover = function(){
+			startMove(this,300);
+		}
+		divs[i].onmouseout = function(){
+			startMove(this,100);
+		}
+	}
+
+	function startMove(obj,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var speed = (target - obj.offsetWidth)/10;
+			speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+			if( obj.offsetWidth == target ){
+				clearInterval( obj.timer );
+			}else{
+				obj.style.width = obj.offsetWidth + speed + "px";
+			}
+		},30)
+	}
+	/*
+	 注意：多物体运动时，定时器之间会互相影响，当某个操作结束了，该运动的物体 结束运动    
+	     让多个物体的运动互不干扰，也就是让每一个物体都有自己的定时器 ，将定时器作为某个对象的属性
+	 */
+</script>

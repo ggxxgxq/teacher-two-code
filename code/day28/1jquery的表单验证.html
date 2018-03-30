@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.js"></script>
+	<body>
+		<form action="ok.html">
+			用户名：<input type="text" id="t1"/><span id="s"></span>
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+</html>
+<script>
+	$("form").submit(function(){
+		if( flagName ){
+			return true;
+		}else{
+			return false;
+		}
+	})
+	var flagName = null;
+	$("#t1").blur(function() {
+		var reg = /^\w{3,6}$/;
+		var str = $(this).val();
+		if( reg.test(str) ){
+			$("#s").html("正确");
+			flagName = true;
+		}else{
+			$("#s").html("不合法");
+			flagName = false;
+		}
+	})
+</script>

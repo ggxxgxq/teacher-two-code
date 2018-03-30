@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1 id="h">本节主题：事件</h1>
+	</body>
+</html>
+<script>
+	//点击h1  改变h1的字体颜色和背景颜色
+	var oH = document.getElementById("h");
+	
+	oH.onclick = function(){
+		oH.style.color = "red";//改变字体
+		oH.style.backgroundColor = "skyblue";
+		oH.style.fontSize = "30px";
+		//改变h1的内容 
+		oH.innerHTML = "下课了";
+	}
+</script>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html,body {
+				width: 100%;
+				height: 100%;
+				background: #f3f2f3;
+			}
+			#main {
+				border: 1px solid red;
+				width: 1225px;
+				margin: 0 auto;
+			}
+			.column {
+				width: 245px;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">加载图片</button>
+		<div id="main">
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//通过Promise对象 封装ajax
+	function ajaxPromise(url,data){
+		if( data ){
+			url = url + "?" + data;
+		}
+		var pro = new Promise(function(success,failed){
+			var ajax = new XMLHttpRequest();
+			ajax.open("get",url);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if( ajax.readyState == 4 && ajax.status == 200 ){
+					//请求服务器的数据成功了
+					success(ajax.responseText);
+				}
+			}
+			//承诺   多长时间后   如果请求服务器失败了 就执行failed
+			setTimeout(function(){
+				failed("请求数据失败了");
+			},5000)
+		})
+		//promise对象执行完成后  将该对象返回
+		return pro;
+	}
+	//点击按钮  获取服务器数据
+	var oBtn = document.getElementById("btn");
+	var cols = document.getElementsByClassName("column");
+	oBtn.onclick = function(){
+		var pro = ajaxPromise("pbl.json");
+		pro.then(function(msg){
+			var arr = JSON.parse(msg);
+			for( var i = 0 ; i < arr.length ; i++ ){
+				var oImg = document.createElement("img");
+				oImg.src = arr[i].src;
+				oImg.width = "245" ;//<img width=220 height=222 >
+				oImg.height = arr[i].height ;
+				var index = minHeightIndex();
+				//console.log(index);
+				cols[index].appendChild(oImg);
+			}
+		},function(msg){
+			alert( msg );
+		})
+	}
+	//获取五列中哪一列的高度是最小的  然后找到高度最小的那一列的下标
+	function minHeightIndex(){
+		//假设第一列的高度是最小的
+		var minHeight = cols[0].offsetHeight;
+		var minHIndex = 0;
+		for( var i = 0 ; i < cols.length ; i++ ){
+			//console.log( cols[i].offsetHeight );
+			if( minHeight > cols[i].offsetHeight ){
+				minHeight = cols[i].offsetHeight;
+				minHIndex = i;
+			}
+		}
+		return minHIndex;
+	}
+	//触发滚动条实现瀑布流加载
+	window.onscroll = function(){
+		//获取五列中高度最小的列的索引
+		var index = minHeightIndex();
+		//最小高度
+		var minHeight = cols[index].offsetHeight;
+		//加载条件 ： 可视区高度 + 页面滚走的距离 > 最小高度  
+		//console.log(index);
+		var wHeight = window.innerHeight;
+		var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+		
+		if( wHeight + sTop > minHeight ){
+			//加载数据  ：如果重新加载新的json数据  就重新请求ajax 
+			oBtn.onclick();//加载pbl.json数据   调用事件中的内容
+		}
+	}
+</script>

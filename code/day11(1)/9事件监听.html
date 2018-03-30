@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		9999
+	</body>
+</html>
+<script>
+	//为document绑定一个单击事件
+	/*document.addEventListener("click",function(evt){
+		var e = evt || event;
+		alert( e );
+	},false)*/
+	
+	document.body.addEventListener("click",function(){
+		alert("body被点击了");
+	},true)
+	document.addEventListener("click",function(evt){
+		alert( "document被点击了" );
+	},true)
+	
+	window.addEventListener("click",function(){
+		alert("window被点击了");
+	},true)
+</script>

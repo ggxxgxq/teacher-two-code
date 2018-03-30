@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function stringToDate(str){
+	    return  new Date(str);
+	}
+	var _date = stringToDate("1998-09-09");
+	//alert( _date.getFullYear() );
+	
+	
+	//通过 Date.parse()获取一个毫秒值  然后再转成日期时间格式 
+	var str = "1999-09-09";
+	var d = new Date( Date.parse(str) );//返回从1970年1月1日到str时间的一个毫秒值 （时间戳）
+	alert( d.getFullYear() );
+</script>

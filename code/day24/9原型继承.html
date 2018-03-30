@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Father(age){
+		this.age = age;
+		this.money = 999999;
+		this.dance = function(){
+			console.log( "跳舞" );
+		}
+	}
+	Father.prototype.name = "孩他爹";
+	Father.prototype.music = function(){
+		console.log("唱歌");
+	}
+	
+	//var f = new Father(38);
+	
+	function Son(){
+		
+	}
+	//原型继承      子类.prototype = new Father();
+	Son.prototype = new Father(38);
+	//38实际上是父类的年龄，但子类继承了age这个属性 ，同样子类的值也是38
+	
+	var son = new Son();
+	
+	/*console.log( son.money );
+	son.dance();*/
+	console.log( son );
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*2．用户输入自己的考试成绩，提示用户是否及格。如果及格了，弹出警告框“恭喜，你及格了”、“不要骄傲啊”。
+	 * 如果没有及格，那么弹出警告框“很遗憾，你没有及格”、“请继续努力啊”。 然后都弹出“么么哒”*/
+	/*var score = prompt("请输入一个成绩");
+	if( !isNaN( score ) ){ // 是一个数字
+		if( score >= 60 ){
+			alert( "恭喜，你及格了" );
+			alert( "不要骄傲啊" );
+		}else{
+			alert( "很遗憾，你没有及格" );
+			alert( "请继续努力啊" );
+		}
+	}else{
+		alert("请输入正确的分数");
+	}
+	alert("么么哒");*/
+	
+	/*
+	 3．根据 BMI （身体质量指数）显示一个人的体型。 ( 多条件 )
+	BMI 指数，就是体重、身高的一个计算公式。公式是：
+	BMI = 体重kg÷身高的平方  身高单位: m米   如：  1.9 
+	条件：
+	过轻：低于 19
+	正常： 19-25
+	过重： 25-28
+	肥胖： 28-32
+	非常肥胖 , 高于32
+		要求：
+	用 JavaScript开发一个程序，让用户先输入自己的体重，然后输入自己的身高（弹出两次 prompt 框）。
+	计算它的 BMI，根据上表，弹出用户的身体情况。比如“过轻” 、 “正常” 、“过重” 、 “肥胖” 、“非常肥胖”。
+	 * */
+	//Math.pow(m,n) 计算m的n次方  
+	/*var height = parseFloat( prompt( "请输入身高m" ) );
+	var weight = parseFloat( prompt( "请输入体重kg" ) );
+	var BMI = weight / Math.pow(height,2);
+	if( BMI < 19 ){
+		alert("太瘦了");
+	}else if( BMI < 25  ){
+		alert( "正常体重" );
+	}else if( BMI < 28 ){
+		alert( "稍微有点胖" );
+	}else if( BMI < 32 ){
+		alert( "肥胖" );
+	}else{
+		alert( "注意身体啦" );
+	}*/
+	
+	/*
+	 一个加油站为了鼓励车主多加油，所以加的多有优惠。（嵌套）
+	92 号汽油，每升 6 元；如果大于等于 20升，那么每升 5.9 ；
+	97 号汽油，每升 7 元；如果大于等于 30升，那么每升 6.95
+	编写 JS 程序，用户输入自己的汽油编号，然后输入自己加多少升，弹出价格。
+
+	 * */
+	
+	var oiltype = prompt( "请输入油号 92？97？" );
+	var litre = prompt( "请输入要加多少升汽油？" );
+	var money = 0;
+	if( oiltype == 92 ){
+		if( litre >= 20 ){
+			money = litre * 5.9;
+		}else{
+			money = litre * 6;
+		}
+	} else if( oiltype == 97 ){
+		if( litre >= 30 ){
+			money = litre * 6.95;
+		}else{
+			money = litre * 7;
+		}
+	}
+	alert( "金额是：" + money );
+</script>

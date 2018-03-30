@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">3333</div>
+	</body>
+</html>
+<script>
+	/*var oDiv = document.getElementById("box");
+	document.onclick = function(){
+		//alert(this);//document  this 指向事件的触发者
+		//点击文档操作  div   让this指向div
+		this.style.width = this.style.height = "100px";
+		this.style.background = "blue";
+	}.bind( oDiv )
+	
+	window.setTimeout(function(){
+		//alert(this); // window  this 指向方法的调用者
+		this.style.display = "none";
+	}.bind( oDiv ),1000)*/
+	
+	/*var arr = [1];
+	arr.forEach(function(){
+		alert( this );//window
+	})*/
+	
+	function fn(){
+		alert( this );//window
+	}
+	//fn();
+	//  call  apply 方法可以改变非匿名函数的this指向
+	
+	fn.call( document );//通过call方法调用fn函数，并且让fn中的this指向 document
+</script>

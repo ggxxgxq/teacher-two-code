@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//函数功能 ：计算任意数字阶乘
+	function getFac(num){
+		var fac = 1;
+		for( var i = 1 ; i <= num ; i++ ){
+			fac *= i;
+		}
+		return fac;//返回这个数的阶乘
+	}
+	/*var f = getFac(5);
+	alert( f );*/
+	/*
+	 8、	编写函数实现：
+		求2的平方的阶乘  + 3的平方的阶乘
+（至少用两个函数实现，一个函数实现平方，一个函数实现阶乘）
+	 */
+	//定义一个函数  功能计算任意一个数的平方
+	function getSqure(num){
+		return num*num;
+	}
+	
+	//定义一个函数 计算 2的平方的阶乘  + 3的平方的阶乘
+	function getSum(){
+		//计算2的平方
+		var num1 =  getSqure(2);
+		//计算3的平方
+		var num2 =  getSqure(3);
+		
+		//计算 num1的阶乘
+		var fac1 = getFac( num1 );
+		//计算 num2的阶乘
+		var fac2 = getFac( num2 );
+		
+		return  fac1 + fac2; 
+		// return getFac(getSqure(2)) + getFac(getSqure(3)) 
+	}
+</script>

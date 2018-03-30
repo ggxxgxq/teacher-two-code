@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取服务器的数据" id="btn"/>
+	</body>
+</html>
+<script>
+	//点击按钮   通过ajax方式    向服务器发送一个用户名  要求返回这个用户名即可
+	oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//encodeURI(数据)
+		ajax.open("get","http://127.0.0.1/ajax1725/demo1.php?uname="+encodeURI("李春娥")+"&upwd='123456'" );
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				alert( ajax.responseText ) ;
+			}
+		}
+	}
+</script>

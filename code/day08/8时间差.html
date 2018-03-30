@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var d = new Date("1997-09-09");//自定义时间  
+	var now = new Date();
+	var diff = now.getTime() - d.getTime();//毫秒值
+	var day = parseInt( diff/1000/60/60/24 );
+	alert( day );
+	
+	//定义一个时间差函数  
+	function timeDiff(start,end){
+		return Math.abs( start.getTime()-end.getTime() ) / 1000;
+	}
+</script>

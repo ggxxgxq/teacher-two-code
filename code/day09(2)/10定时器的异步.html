@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="开始" id="t1"/>
+		<input type="button" value="停止" id="t2"/>
+		<div id="d" style="width:100px;height:100px;border:1px solid red;"></div>
+	</body>
+</html>
+<script>
+	/*setTimeout(function(){
+		alert("hello");
+	},2000)
+	alert("下课了");
+	alert("下课了");
+	alert("下课了");
+	alert("下课了");
+	alert("下课了");*/
+	//异步 ： 定时器后面的代码先执行 
+	var num = 90;
+	setTimeout(function(){
+		num++;
+		alert(num);
+	},1000)
+	num += 10;
+</script>

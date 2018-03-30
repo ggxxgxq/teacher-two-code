@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="t" value="请输入"/> <span id="s"></span>
+	</body>
+</html>
+<script>
+	var oTxt = document.getElementById("t");
+	var oSpan = document.getElementById("s");
+	//获取焦点 onfocus  清空文本框
+	oTxt.onfocus = function(){
+		oTxt.value = "";
+	}
+	//失去焦点 根据内容判断合法性
+	oTxt.onblur = function(){
+		var cont = oTxt.value;//获取文本框的内容
+		/*
+		 文本框获取焦点，清空信息
+		文本框失去焦点时，如果为空 ，提示  不能为空，
+		如果为非数字，提示不合法，如果长度小于6，提示“长度不够”
+		如果为数字，提示正确
+		 * */
+		if( cont == "" ){
+			oSpan.innerHTML = "不能为空";
+			oSpan.style.color = "red";
+		}else if( isNaN(cont) ){
+			oSpan.innerHTML = "不合法，必须是数字";
+			oSpan.style.color = "red";
+		}else if( cont.length < 6 ){
+			oSpan.innerHTML = "长度不能小于6";
+			oSpan.style.color = "red";
+		}else{
+			oSpan.innerHTML = "正确";
+			oSpan.style.color = "green";
+		}
+	}
+</script>

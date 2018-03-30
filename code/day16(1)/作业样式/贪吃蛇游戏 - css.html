@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+	*{ margin: 0; padding:0; }
+	li{ list-style: none; }
+	#main{ margin:20px auto; position: relative; overflow: hidden;}
+	#gird{ border:1px black solid; border-bottom: none; border-right: none; overflow: hidden; }
+	#gird li{ border:1px black solid; border-left: none; border-top: none; float: left; }
+	#gameScore{ float:right; }
+	#snake{}
+	#snake .snakeHead{ background:red; position: absolute; }
+	#snake .snakeBody{ background:red; opacity: 0.5; position: absolute; }
+	/*#food{ background:blue; position: absolute; }*/
+	.food{ background:blue; position: absolute; }
+	</style>
+</head>
+<body>
+	<div id="main">
+		<ul id="gird">
+			
+		</ul>
+		<input type="button" value="开始" id="gameButton">
+		<div id="gameScore">积分：0</div>
+		<div id="snake">
+			<!-- <div class="snakeHead"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div>
+			<div class="snakeBody"></div> -->
+		</div>
+		<!-- <div id="food"></div> -->
+	</div>
+</body>
+</html>
+<script src="../../public.js"></script>
+<script>
+	//生成表格
+	//点击按钮开始游戏
+	//1、创建蛇头      2、创建食物    3、蛇运动   4、蛇运动方向的操作  5、蛇和食物的碰撞
+	var main = $id("main");
+	var gird = $id("gird");//ul
+	var girdLi = gird.children;//li
+	var snake = $id("snake");//蛇容器
+	var snakeDiv = snake.children;//蛇身体  ：  头 + 蛇身
+	var girdData = {
+		row : 25,
+		col : 25,
+		size : 20
+	}
+	var snakePos = 57;//蛇头的初始位置  下标为27的li的位置
+	var dir = 39;//蛇的初始方向   向右
+	//生成表格
+	createGird();
+	function createGird(){
+		main.style.width =  (girdData.size+1)*girdData.col + 1+ "px";
+		for( var i = 0 ; i < girdData.row*girdData.col ; i++ ){
+			var li = createEle("li");
+			li.style.width = li.style.height = girdData.size + "px";
+			gird.appendChild( li );
+		}
+	}
+	//点击按钮 开始游戏
+	$id("gameButton").onclick = function(){
+		createSnake();
+		createFood();
+		snakeMove();
+		snakeBind();
+	}
+	//蛇的操作 运动方向
+	function snakeBind(){
+		document.onkeydown = function(e){
+			var e = e || event;
+			var code = e.keyCode || e.which;
+			switch( code ){
+				case 37 : //向左
+					dir = 37;
+					break;
+				case 38 : //向上
+					dir = 38;
+					break;
+				case 39 : //向右
+					dir = 39;
+					break;
+				case 40 : //向下
+					dir = 40;
+					break;
+			}
+		}
+	}
+	//蛇的运动
+	function snakeMove(){ //沿着初始方向运动
+		setInterval(function(){
+			//检测蛇和食物是否碰撞 
+			//如果碰上了 ： 食物变成蛇身体  -- className 将食物添加到蛇身体上      随机创建一个食物     
+			if( pz( snakeDiv[0],food ) ){
+				food.className = "snakeBody";
+				snake.appendChild( food );//appendChild 剪切功能  将食物添加到蛇的身体上
+				createFood();
+			}
+			
+			//让蛇身体跟随蛇头移动  -- 鼠标跟随
+			for( i = snakeDiv.length-1 ; i > 0; i-- ){
+				snakeDiv[i].style.left = snakeDiv[i-1].style.left;
+				snakeDiv[i].style.top = snakeDiv[i-1].style.top;
+			}
+			
+			switch( dir ){
+				case 37 : //向左
+					snakeDiv[0].style.left = snakeDiv[0].offsetLeft - ( girdData.size + 1 )+"px";
+					break;
+				case 38 : //向上
+					snakeDiv[0].style.top = snakeDiv[0].offsetTop - ( girdData.size + 1 )+"px";
+					break;
+				case 39 : //向右
+					snakeDiv[0].style.left = snakeDiv[0].offsetLeft + ( girdData.size + 1 )+"px";
+					break;
+				case 40 : //向下
+					snakeDiv[0].style.top = snakeDiv[0].offsetTop + ( girdData.size + 1 )+"px";
+					break;
+			}
+			//出界了
+			if( isOut() ){
+				alert("游戏结束");
+				location.reload();
+			}
+		},300)
+	}
+	//判断蛇头是否到达边界
+	function isOut(){
+		//如果蛇头和所有的li没碰上  就出界了     return true
+		// 蛇头和所有的li都碰上了 表示没出界  return false
+		for( var i = 0 ; i < girdLi.length ; i++ ){
+			if( pz( snakeDiv[0] , girdLi[i] )  ){ // 和所有的li都碰上 没有出界
+				return false;
+			}
+		}
+		return true; //出界了
+	}
+	//创建蛇头
+	function createSnake(){
+		var snakeHead = createEle("div");
+		snakeHead.className = "snakeHead";
+		snake.appendChild(snakeHead);
+		snakeHead.style.width = snakeHead.style.height = girdData.size + "px";
+		snakeHead.style.left = girdLi[snakePos].offsetLeft + "px";
+		snakeHead.style.top = girdLi[snakePos].offsetTop + "px";
+	}
+	//创建食物
+	function createFood(){
+		food = createEle("div");
+		food.className = "food";
+		gird.appendChild(food);
+		food.style.width = food.style.height = girdData.size + "px";
+		//获取食物的随机下标   25*25个li   0--  25*25-1
+		var index = rand( 0 , girdData.row*girdData.col-1 );
+		//根据index值定位食物的随机位置
+		food.style.left = girdLi[index].offsetLeft + "px";
+		food.style.top = girdLi[index].offsetTop + "px";
+	}
+</script>

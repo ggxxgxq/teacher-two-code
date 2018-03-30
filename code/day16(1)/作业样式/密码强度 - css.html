@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span{
+				width:80px;
+				height: 10px;
+				display: inline-block;
+				background: deeppink;
+				margin-right: 3px;
+				font-size: 18px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<div id="box" style="margin-top: 4px;">
+			<span id="r">弱</span>
+			<span id="z">中</span>
+			<span id="q">强</span>
+		</div>
+	</body>
+</html>
+<script src="../../public.js"></script>
+<script type="text/javascript">
+ 	/*
+ 	 1、一类字符 是   弱         纯数字  弱              纯字母  弱                  纯 特殊字符 弱
+ 	 2、两类字符 是   中   
+ 	 3、三类字符      强
+ 	*/	
+ 	//包含数字   字母  特殊字符 三个正则
+	var regNum = /\d+/;
+	var regChar = /[a-z]+/i;
+	var regOth = /[!@#$%^&*]+/;
+	//只能有数字  字母  特殊字符 三个正则
+	var _regNum = /^\d+$/;
+	var _regChar = /^[a-z]+$/i;
+	var _regOth = /^[!@#$%^&*]+$/;
+	
+	$id("txt").onkeyup = function(){
+		var str = this.value;
+		
+		//长度小于5  不做处理
+		if(	str.length < 5 ){		
+			//排他处理
+			$id("r").style.backgroundColor = "deeppink";
+			$id("z").style.backgroundColor = "deeppink";
+			$id("q").style.backgroundColor = "deeppink";
+			return;
+		}
+		//排他处理
+		$id("r").style.backgroundColor = "deeppink";
+		$id("z").style.backgroundColor = "deeppink";
+		$id("q").style.backgroundColor = "deeppink";
+		
+		if( _regNum.test(str) || _regChar.test(str) || _regOth.test(str) ){  //弱
+			$id("r").style.backgroundColor = "gray";
+		}else if( regNum.test(str) && regChar.test(str) && regOth.test(str) ){ //强  即包含数字 又包含字母  又包含特殊字符
+			$id("q").style.backgroundColor = "gray";
+		}else{
+			$id("z").style.backgroundColor = "gray";
+		}
+	}
+</script>

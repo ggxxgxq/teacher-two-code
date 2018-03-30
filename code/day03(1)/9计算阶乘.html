@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//打印5的阶乘  5! :  5 * 4 * 3 * 2 * 1
+	/*var fac = 1;
+	for( var i = 1 ; i <= 5 ; i++ ){
+		fac *= i;
+	}
+	
+	alert( fac );*/
+	
+	// 计算1--5的阶乘和    1！ + 2！ + 3! + 4! + 5!
+	var sum = 0;//累加和
+	var fac = 1;//计算某个数的阶乘
+	for( var i = 1 ; i <= 5 ; i++ ){
+		//先做某个数的阶乘
+		fac *= i;//fac 1   2!  3!
+		//再累加阶乘和
+		sum += fac;//sum 1 + 2! + 3!
+	}
+	alert( sum );
+</script>

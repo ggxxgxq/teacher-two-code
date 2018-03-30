@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="outer.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+	/*
+	5、	 计算 100—200之间所有素数的和。
+	*/
+	
+	//计算100-200之间素数和
+	function primerSum(){
+		var sum = 0;
+		for( var i = 100 ; i <= 200 ; i++ ){
+			//判断i是不是素数
+			if( isPrimerNumber(i) ){ //如果i是素数
+				sum += i;
+			}
+		}
+		//将素数和返回
+		return sum;
+	}
+	//alert( primerSum() );
+	
+	
+</script>

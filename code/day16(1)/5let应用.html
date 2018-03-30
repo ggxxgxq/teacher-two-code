@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script>
+	//点击某个li获取li的下标
+	var list = document.getElementsByTagName("li");
+	for( let i = 0 ; i < list.length ; i++ ){
+		//list[i].index = i;
+		list[i].onclick = function(){
+			alert( i );
+		}
+	}
+	//思考 ：通过  改写 选项卡
+</script>

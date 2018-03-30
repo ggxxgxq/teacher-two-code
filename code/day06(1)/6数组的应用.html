@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//定义一个含有10个元素的数组，计算数组中素数的个数
+	var arr = [23,11,9,7,78,13,2,3,4,5,6];
+	//判断数组中任意一个元素是否是素数
+	function isPrimerNumber(num){
+		for( var i = 2 ; i < num ; i++ ){
+			if( num % i == 0 ){
+				return false; //不是素数
+			}
+		}
+		return true;//是素数
+	}
+	var count = 0;
+	for( var i = 0 ; i < arr.length ; i++ ){
+		if( isPrimerNumber( arr[i] ) ){ //如果是素数
+			count++;
+		}
+	}
+	alert( count );
+	//alert( isPrimerNumber( arr[3] ) );
+</script>

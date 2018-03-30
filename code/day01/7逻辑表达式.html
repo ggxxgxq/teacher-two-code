@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	document.write( (8==9 || 9 > 10) + "<br>");//false 
+	document.write( (8==9 || 9 < 10) + "<br>");//true
+	document.write( (8==9 && 9 < 10) + "<br>");//false
+	document.write( (!false && 9 < 10) + "<br>");// true
+	document.write( (!(5>6) && 9 < 10) + "<br>");// true
+	
+	//  写一个表达式 表示  i 能被 2 整除    i%2 == 0
+	//  写一个表达式 表示 i既能被3整除 又能被7整除  i % 3 == 0 && i % 7 == 0  
+	//  写一个表达式 表示  i能被4整除 但不能被100整除  或 i能被400整除  
+	//	i%4==0&&i%100!=0||i%400==0     闰年的条件
+</script>

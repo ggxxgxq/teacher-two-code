@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/sport.js"></script>
+		<link rel="stylesheet" type="text/css"	 href="css/css.css" />
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>
+					<span class="keyA">A</span>
+					<P class="keyA"></P>
+				</li>
+				<li>
+					<span class="keyS">S</span>
+					<P class="keyS"></P>
+				</li>
+				<li>
+					<span class="keyD">D</span>
+					<P class="keyD"></P>
+				</li>
+				<li>
+					<span class="keyJ">J</span>
+					<P class="keyJ"></P>
+				</li>
+				<li>
+					<span class="keyK">K</span>
+					<P class="keyK"></P>
+				</li>
+				<li>
+					<span class="keyL">L</span>
+					<P class="keyL"></P>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script src="../../sport4.js"></script>
+<script type="text/javascript">
+	var list =document.getElementsByTagName("li");
+	var ospan =document.getElementsByTagName("span").innerHTML;
+	for(var i=0;i<list.length;i++){
+		list[i].index=i;
+		list[i].children[0].index=i;
+		list[i].children[1].index=i;
+		
+	}
+	 document.onkeydown=function(e){
+	 	var e = e ||event;
+	 	var code =e.keyCode || e.which;
+	 	alert(code);
+	 	
+	 	if(code==ospan.charCode){
+	 		//startMove()
+	 		alert()
+	 	}
+	 	//if(code==83)
+	 	//if(code==68)
+	 	//if(code==74)
+	 	//if(code==75)
+	 	//if(code==76)
+	 }
+</script>

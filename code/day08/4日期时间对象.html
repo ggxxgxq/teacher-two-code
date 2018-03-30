@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		当前时间是：<div id="d"></div>
+	</body>
+</html>
+<script>
+	var d = new Date();
+//	alert( d );
+	console.log( d.getMonth() );
+	console.log( d.getDay() );
+	var oDiv = document.getElementById("d");
+	oDiv.innerHTML = d.getFullYear() + "年" + (d.getMonth()+1) + "月" + d.getDate() + "日";
+	alert( d.toLocaleString() );
+</script>

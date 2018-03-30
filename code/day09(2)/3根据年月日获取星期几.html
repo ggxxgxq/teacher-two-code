@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var y = "2017",m = "12",d = "21";
+	//将字符串转成日期时间格式
+	var d = new Date( y + "-" + m + "-" + d );
+	var arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+	alert( arr[ d.getDay() ] );
+</script>

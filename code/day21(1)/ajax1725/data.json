@@ -1,0 +1,8 @@
+[
+	{ "userId" : "001" , "userName"  : "admin" , "userPwd" : "123"},
+	{ "userId" : "002" , "userName"  : "小明" , "userPwd" : "234"},
+	{ "userId" : "003" , "userName"  : "小猪" , "userPwd" : "567"},
+	{ "userId" : "004" , "userName"  : "夏利" , "userPwd" : "123"},
+	{ "userId" : "005" , "userName"  : "admin3" , "userPwd" : "123"},
+	{ "userId" : "006" , "userName"  : "admin2" , "userPwd" : "123"}
+]

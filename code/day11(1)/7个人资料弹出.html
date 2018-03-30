@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		ul{
+			display:none;
+		}
+	</style>
+	<body>
+		<input type="button" value="显示个人资料" id="btn"/>
+		<ul id="u">
+			<li>姓名：王宝强</li>
+			<li>职业：演员</li>
+			<li>性别：男</li>
+			<li>代表作 ： 人在囧途</li>
+			<li>妻子 ：xxx</li>
+		</ul>
+	</body>
+</html>
+<script src="../public.js"></script>
+<script>
+	//当点击按钮时  让个人资料显示 
+	$id("btn").onclick = function(e){
+		var e = e || event;
+		e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+		$id("u").style.display = "block";
+	}
+	// 当点击 document对象时   隐藏个人资料
+	document.onclick = function(){
+		$id("u").style.display = "none";
+	}
+</script>

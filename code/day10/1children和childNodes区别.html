@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>兄弟多个1</li>
+			<li>兄弟多个2</li>
+			<li>兄弟多个3</li>
+		</ul>
+	</body>
+</html>
+<script>
+	var oUl = document.getElementsByTagName("ul")[0];
+	//alert( oUl.children.length );
+	var list = oUl.childNodes;
+	for( var i = 0 ; i < list.length ; i++ ){
+		//alert( list[i].nodeType )
+		if( list[i].nodeType == 1 ){
+			list[i].style.color = "red";
+		}
+	}
+	//alert( oUl.tagName );
+</script>

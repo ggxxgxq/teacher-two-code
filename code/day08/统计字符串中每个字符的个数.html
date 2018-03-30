@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function fnCount(str){ 
+		// 判断字符串中有几个"a"
+		for( var code = 0 ; code <= 127 ; code++ ){
+			//根据code值得到对应的字符
+			var ch = String.fromCharCode(code);
+			//判断ch在str中出现的次数
+			var count = 0;
+			for( var i = 0 ; i < str.length ; i++ ){
+				if( str.charAt(i) == ch ){
+					count++
+				}
+			}
+			if( count>0 ){
+				console.log("字符"+ch +"出现了"+count+"次");
+			}
+		}	
+	}
+	fnCount("nihoLUHIHi$$897");
+</script>

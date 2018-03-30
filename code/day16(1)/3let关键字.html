@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//let  块级作用域
+	
+	//定义变量
+	/*var num = 90;
+	let x  = 12;
+	alert(num);
+	alert(x);*/
+	
+	//  {}  表示一个代码块      let 定义的变量只在  {}  块内有效
+	/*{
+		let  num = 90;
+		alert( num );
+	}*/
+	
+	/*if( true ){
+		let num = 12;
+		alert(num);
+	}*/
+	
+	//let不能重复声明变量
+	/*{
+		let a = 10;
+		let a = 20;
+		alert( a );//报错
+	}*/
+	
+	//let 声明的变量  变量未声明之前该变量不可以使用  这种现象 叫做 "暂时性死区"
+	/*{
+		alert( b ); //报错
+		let b = 90;
+	}*/
+	
+	function fn(){
+		alert( a );//报错
+		let a = 20;
+	}
+	fn();
+</script>

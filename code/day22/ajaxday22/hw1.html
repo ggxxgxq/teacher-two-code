@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<ul></ul>
+	</body>
+</html>
+<script>
+	var oTxt = document.getElementById("txt");
+	var oUl = document.getElementsByTagName("ul")[0];
+	oTxt.onkeyup = function(){
+		oUl.innerHTML = "";
+		var ajax = new XMLHttpRequest();
+		ajax.open("GET","data.json");
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				var arr = JSON.parse(ajax.responseText);//  '{}'  '[]'   
+				for( var i = 0 ; i < arr.length ; i++ ){
+					var oli = document.createElement("li");
+					oli.innerHTML = arr[i].pname;
+					//判断用户输入的字符串在arr[i].pname中是否存在 如果存在就添加到ul中
+					if( arr[i].pname.indexOf( oTxt.value ) != -1 ){
+						oUl.appendChild(oli);
+					}
+				}
+			}
+		}
+	}
+	
+	//鼠标操作li的移入和移出
+	oUl.onmouseover = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName=="LI" ){
+			target.style.backgroundColor = "pink";
+		}
+	}
+	oUl.onmouseout = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName=="LI" ){
+			target.style.backgroundColor = "";
+		}
+	}
+	//鼠标点击当前的li  将当前操作的li的内容添加到文本框中
+	oUl.onclick = function(e){
+		var e = e || event;
+		var target = e.target || e.srcElement;
+		if( target.nodeName=="LI" ){
+			oTxt.value = target.innerHTML;
+			oUl.innerHTML = "";
+		}
+	}
+</script>

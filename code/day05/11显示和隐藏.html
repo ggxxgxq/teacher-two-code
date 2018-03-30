@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="显示" id="btn1"/>
+		<input type="button" value="隐藏" id="btn2"/><br>
+		<img src="1.png" id="m"/>
+	</body>
+</html>
+<script>
+	var oBtnShow = document.getElementById("btn1");
+	var oBtnHide = document.getElementById("btn2");
+	var oImg = document.getElementById("m");
+	oBtnShow.onclick = function(){
+		oImg.style.display = "block";
+	}
+	oBtnHide.onclick = function(){
+		oImg.style.display = "none";
+	}
+</script>

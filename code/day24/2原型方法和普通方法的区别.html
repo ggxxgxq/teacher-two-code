@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var arr = [1,2,3,4,5];//new Array()
+	var arr2 = [3,4,5,6,7];
+	//在Array的原型上添加一个sum方法  
+	Array.prototype.sum = function(){
+		var s = 0;
+		for( var i = 0 ; i < this.length ; i++ ){
+			s += this[i];
+		}
+		return s;
+	}
+	
+	arr.sum = function(){
+		/*var s = 0;
+		for( var i = 0 ; i < this.length ; i++ ){
+			s += this[i];
+		}
+		return s;*/
+		return 23;
+	}
+	//alert( arr.sum() );
+	
+	
+	
+	
+	alert( arr.sum() );
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul></ul>
+	</body>
+</html>
+<script>
+	var  json = {
+		"pid":"1100",
+		"info" : [
+					{ "pname" : "高粱米","price":2,"paddr":"北京" },
+					{ "pname" : "小米","price":3,"paddr":"上海" },
+					{ "pname" : "红米","price":20,"paddr":"北京" },
+					{ "pname" : "玉米","price":5,"paddr":"辽宁" }
+			     ]
+	}
+	//要求 ：取出 json中的产品数据，存放到页面ul中  以li列表的形式展示
+	/*
+	 <li>高粱米--2--北京</li>
+	 * */
+	var oUl = document.querySelector("ul");
+	/*for( var i = 0 ; i < json.info.length ; i++  ){
+		var item = json.info[i];
+		var oli = document.createElement("li");
+		oli.innerHTML = item.pname + "--" + item.price + "--" + item.paddr;
+		oUl.appendChild( oli );
+	}*/
+	
+	var str = "";
+	for( var i = 0 ; i < json.info.length ; i++  ){
+		var item = json.info[i];
+		str += "<li>"+item.pname + "--" + item.price + "--" + item.paddr+"</li>";
+	}
+	oUl.innerHTML = str;
+</script>

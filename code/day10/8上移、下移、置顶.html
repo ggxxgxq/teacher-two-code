@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border=1 width=500>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>
+					<input type="button" value="上移" class="up" />
+					<input type="button" value="下移" class="down" />
+					<input type="button" value="置顶" class="top2" />
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>
+					<input type="button" value="上移" class="up" />
+					<input type="button" value="下移" class="down" />
+					<input type="button" value="置顶" class="top2" />
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>
+					<input type="button" value="上移" class="up" />
+					<input type="button" value="下移" class="down" />
+					<input type="button" value="置顶" class="top2" />
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>
+					<input type="button" value="上移" class="up" />
+					<input type="button" value="下移" class="down" />
+					<input type="button" value="置顶" class="top2" />
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script src="../public.js">
+</script>
+<script>
+	//置顶 ：将当前操作的行移动到 第一行的 前面
+	// 参照节点 ：第一行
+	// 要移动的行 ： 当前按钮所在的行
+	var tops = document.getElementsByClassName("top2");
+	var ups = document.getElementsByClassName("up");
+	var tab = document.getElementsByTagName("table")[0];
+	for( var i = 0; i < tops.length ; i++ ){
+		tops[i].onclick = function(){
+			//this.parentNode.parentNode,
+			//alert( tab.children[0].children[0].nodeName );
+			tab.children[0].insertBefore( this.parentNode.parentNode,tab.children[0].children[0] );
+		}
+	}
+	
+	for( var i = 0; i < ups.length ; i++ ){
+		ups[i].onclick = function(){
+			//参照节点：当前行的前一个兄弟节点
+			//判断是否有前一个兄弟节点 
+			//如果有前一个兄弟节点
+			if( this.parentNode.parentNode.previousElementSibling ){
+				tab.children[0].insertBefore(this.parentNode.parentNode,this.parentNode.parentNode.previousElementSibling);
+			}
+		}
+	}
+</script>

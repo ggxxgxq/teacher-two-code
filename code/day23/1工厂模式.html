@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//工厂
+	function dog(price,color){
+		//备料:创建对象
+		var obj = new Object();
+		//加工：为对象添加属性和功能
+		obj.price = price;
+		obj.color = color;
+		obj.running = function(){
+			return "奔跑..."
+		}
+		//出厂：返回对象
+		return obj;
+	}
+	
+	//工厂
+	function stu(name,tel){
+		var obj = new Object(); 
+		obj.name = name;
+		obj.tel = tel;
+		return obj;
+	}
+	/*var d = dog("2","black");//d 代表一个对象
+	console.log( d.price );
+	console.log( d.running() );
+	var d2 = dog(3,"white");*/
+	
+	//创建一个dog对象
+	var d = dog("2","black");
+	//创建一个stu对象
+	var s = stu("小明","12333330000");
+	
+	//判断 d 和  s 属于哪一个类呢
+	// instanceof ：  判断某个对象属于哪一个构造函数   
+	alert( d instanceof Object);//true
+	alert( s instanceof Object);//true
+</script>

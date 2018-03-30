@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Animal(name,age){
+		this.name = name; //实例属性
+		this.age = age;
+	}
+	Animal.prototype.eat = function(){ //原型方法
+		return this.name + "在吃某某";
+	}
+	
+	var a1 = new Animal("小白",2);
+	var a2 = new Animal("大白",3);
+	
+</script>

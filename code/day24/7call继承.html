@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*function fn(){
+		alert(this);
+	}
+	fn.call(document);*/
+	
+	//call 继承
+	function Father(name,age){
+		this.name = name;
+		this.age = age;
+		this.dance = function(){
+			console.log("跳舞");
+		}
+		this.sing = function(){
+			console.log("唱歌");
+		}
+	}
+	
+	//score 表示子类特有的属性
+	function Son(name,age,score){
+		Father.call(this,name,age);//子类继承父类的属性和功能
+		this.score = score;
+		this.study = function(){
+			console.log( "学习" );
+		}
+	}
+	var son = new Son("小明",17,100);
+	son.sing();
+	son.study();
+	console.log( son.age , son.score );
+	
+</script>

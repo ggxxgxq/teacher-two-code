@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <ul>
+        <li>一级菜单ITEM
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单ITEM
+                    <ul>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单
+							<ul>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+								<li>四级菜单</li>
+							</ul>
+						</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>一级菜单</li>
+        <li>一级菜单ITEM
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单
+                	<ul>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                    </ul>
+                </li>
+                <li>二级菜单ITEM
+                    <ul>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                        <li>三级菜单</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>一级菜单</li>
+    </ul>
+    
+    </body>
+</html>
+<script>
+	/*
+	 思路 ：  为所有的li添加单击事件  
+	 	 判断li内部的子元素 ul是否是隐藏的   如果隐藏就显示  否则就隐藏
+	 * */
+	var list = document.getElementsByTagName("li");
+	for( var i = 0 ; i < list.length ; i++ ){
+		list[i].onclick = function(e){
+			var e = e || event;
+			e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+			if( this.lastElementChild.style.display == "none" ){
+				this.lastElementChild.style.display = "block";
+			}else{
+				this.lastElementChild.style.display = "none";
+			}
+		}
+	}
+</script>

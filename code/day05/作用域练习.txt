@@ -1,0 +1,71 @@
+
+练习题：
+var a = 10; 全局
+function fun(){
+     var m = 10;  局部  
+     x = 10;      全局
+     a = 20;      全局
+     alert(a);     20
+}
+fun();
+alert(x);   10   
+alert(m);   报错
+======================================================
+    var a=10;
+    function fun(){
+        a="global";
+    }
+    console.log(a);  10  
+-----------------------------------
+    var a;
+    function fun(){
+        a="global"; 
+    }
+    fun();
+    console.log(a);   global
+    -----------------------------------
+    var a=1;
+    function fun(){
+        a=b=2; 
+    }
+    fun();
+    alert(a); 2 
+    alert(b);  2 
+     ------------------------------------
+    function aa(){
+    	console.log (b)   undefined
+        a = 10;       
+        var b = 20;       
+        console.log (b)   20 
+    }
+    aa();
+    console.log(a);  10
+    console.log(b);  报错
+    -----------------------
+    var a=18;
+    f1();
+    function f1(){
+        var b=9;
+        console.log(a);  undefined   
+        console.log(b);  9 
+        var a='123';
+    }
+---------------------------
+    
+    f1();
+    console.log(c);9    
+    console.log(b);  9
+    console.log(a);  报错
+    function f1(){
+        var a=b=c=9;  a是局部  b、c全局变量 
+        console.log(a); 9
+        console.log(b);  9
+        console.log(c); 9 
+    }
+    -------------------------
+    var num=10;
+    fun();
+    function fun(){
+        console.log(num);   undefined
+        var num=20;
+    }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//test()   exec()
+	function fnExec(){
+		var reg = /\d+/;//包含一个数字
+		var str = "千3288锋34教56育";
+		var arr = reg.exec(str); 
+		// 根据正则表达式的规则在字符串str中查找 是否包含一个数字  如果有就返回一个长度为1的数组
+		console.log( arr )
+	}
+	//fnExec();
+	
+	function fnMatch(){
+		/*var reg = /\w+/g; //一个以上的单词字符
+		var str = "千13锋$教aaa_育";
+		var arr = str.match( reg ); //通过正则在字符串中查找一个以上的单词字符，找到就存到数组arr
+		alert( arr );*/
+		
+		var str = "123How14Old543Are54You3";
+		//取出字符串中的每一个单词
+		var reg = /[a-z]+/ig;
+		var arr = str.match( reg );		
+		alert( arr );
+	}
+	//fnMatch();
+	
+	function fnSearch(){
+		var str = "千锋$教13aaa_育";
+		var reg = /\d/;
+		var index = str.search( reg );//在str中查找满足reg正则的第一个字符下标  indexOf
+		alert( index );
+	}
+	
+	//fnSearch();
+	
+	function fnReplace(){
+		var str = "中华t人民t共和t国";//t为敏感词
+		var reg = /t/g;
+		var newStr = str.replace(reg,"*");
+		alert( newStr );  // split("").join("")  
+	}
+	//fnReplace();
+	
+	/*var str = "中华ee  t人  民t  共和  t国  ";
+	console.log( str.split(" ") );
+	var arr = str.split(" ").join("");
+	console.log( arr );*/
+</script>
+

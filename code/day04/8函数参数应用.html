@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//1、	定义函数，功能是 输出m---n之间的闰年    传参数实现
+	function fnLeapYear(m,n){
+		// 假设 m < n
+		if( m > n ){
+			var t = m;
+				m = n;
+				n = t;
+		}
+		for( var i = m ; i <= n ; i++ ){
+			if( !(i%4) && i%100 || !(i%400) ){
+				document.write(i + " ");
+			}
+		}
+	}
+	//fnLeapYear(2000,2017);
+	
+	//2、	函数实现  输出1—100中（7的倍数和带7的数除外）的数  (传参数实现)
+	function fn(num){
+		for( var i = 1 ; i <= 100 ; i++ ){
+			if( i % num == 0 || i % 10 == num || parseInt(i / 10) == num ){
+				continue;
+			}
+			document.write(i + " ");
+		}
+	}
+	//fn(8);
+	//3、	编写函数功能是将三个数按照从小到大顺序输出
+	function fnSort(a,b,c){
+		//先确定最小的数
+		var t;
+		if( a > b ){
+			t = a;
+			a = b;
+			b = t;
+		}
+		if( a > c ){
+			t = a;
+			a = c;
+			c = t;
+		}
+		if( b > c ){
+			t = c;
+			c = b;
+			b = t;
+		}
+		//a < b < c
+		alert("三个数按照从小到大的顺序是 ： " + a + "," + b + "," + c);
+	}
+	//fnSort(12,452,3);
+</script>

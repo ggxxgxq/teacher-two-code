@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt"/>
+		<input type="button" value="留言" id = "b1"/>
+		<input type="button" value="批量删除" id = "b2"/>
+		<ul id="u"></ul>
+	</body>
+</html>
+<script>
+	var oTxt = document.querySelector("#txt");
+	var oSave = document.querySelector("#b1");
+	var oDel = document.querySelector("#b2");
+	var oUl = document.querySelector("#u");
+	oSave.onclick = function(){
+		var num = 5;//页面上最多显示5条数据
+		var oli = document.createElement("li");
+		oli.innerHTML = oTxt.value;
+		oUl.insertBefore(oli,oUl.children[0]);
+		
+		//判断最后一条数据是否存在  最后一条数据下标是num
+		if( oUl.children[num] ){
+			oUl.children[num].remove();
+		}
+		
+		//为每一个li添加单击事件
+		var list = document.getElementsByTagName("li");
+		for( var i = 0 ; i < list.length ; i++ ){
+			list[i].onclick = function(){
+				//判断当前行是否有背景颜色  如果没有就添加
+				if( this.style.backgroundColor ){
+					this.style.backgroundColor = "";
+					this.mark = "";
+				}else{
+					this.style.backgroundColor = "pink";
+					this.mark = 1;
+				}
+			}
+		}
+		//批量删除
+		oDel.onclick = function(){
+			for( var i = 0 ; i < list.length ; i++ ){
+				if( list[i].mark ){
+					list[i].remove();
+					i--;
+				}
+			}
+		}
+	}
+	
+</script>

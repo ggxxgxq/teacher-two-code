@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:150px;
+			height:150px;
+			background:skyblue;
+			position:absolute;
+			left:100px;
+			top:100px;
+			cursor:move;
+		}
+	</style>
+	<body>
+		<div id="box">拖拽文字</div>
+	</body>
+</html>
+<script>
+	var oDiv = document.querySelector("#box");
+	oDiv.onmousedown = function(e){
+		var e = e || event;
+		var disx = e.offsetX;
+		var disy = e.offsetY;
+		document.onmousemove = function(e){
+			//取消移动时的文字选中状态 
+			//window.getSelection().removeAllRanges();
+			//document.selection.empty();
+			window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+			var e = e || event;
+			var x = e.pageX - disx;
+			var y = e.pageY - disy;
+			var maxL = window.innerWidth - 150;
+			var maxT = window.innerHeight - 150;
+			x>0?x=0:(x>maxL?x=maxL:x);
+			y>0?y=0:(y>maxT?y=maxT:y);
+			//边界处理    
+			/*if( x < 0 ){ //左边界
+				x = 0;
+			}else if( x > maxL ){ //右边界
+				x = maxL;
+			}
+			
+			if( y < 0 ){ //上边界
+				y = 0;
+			}else if( y > maxT ){ //下边界
+				y = maxT;
+			}*/
+			//思考 ： 三目运算符实现 ：
+			
+			oDiv.style.left = x + "px";
+			oDiv.style.top = y + "px";
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+		// return false;
+	}
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<input type="button" value="append/appendTo" />
+		<input type="button" value="prepend/prependTo" />
+		<input type="button" value="after/insertAfter" />
+		<input type="button" value="remove/empty/clone" />
+		<div style="width: 500px; height: 300px; border: 2px solid red;">
+			<p>全力以赴学习吧</p>
+			<p>全力以赴学习吧</p>
+			<p>全力以赴学习吧</p>
+		</div>
+	</body>
+</html>
+<script>
+	//表单选择器    
+	//$("<p>新增段落p</p>")  创建一个新的段落 并添加内容
+	// $("<p>")   创建一个空段落标签
+	$(":button:eq(0)").click(function(){
+//		$("div").append("<p>新增段落p</p>");\n
+		$("<p>新增段落p</p>").appendTo("div");
+	})
+	
+	$(":button:eq(1)").click(function(){
+//		$("div").prepend("<p>新增段落p</p>");\n
+		$("<p>新增段落p</p>").prependTo("div");
+	})
+	$(":button:eq(2)").click(function(){
+		$("div").after("<p>新增段落p</p>"); 
+		//$("<p>新增段落p</p>").insertAfter("div");
+	})
+	$(":button:eq(3)").click(function(){
+		//$("div").remove();
+		//$("div").empty();
+		$("div").clone().insertAfter("div");
+	})
+</script>

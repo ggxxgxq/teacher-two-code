@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//定义一个函数 计算n!  递归实现
+	function fac(n){
+		if( n == 1 ){
+			return 1;
+		}else{
+			return n*fac(n-1);
+		}
+	}
+	//alert( fac(5) );
+	function fun(){
+		var fac = 1;
+		for( var i = 1 ; i <= 5 ; i ++ ){
+			fac *= i; 
+		}
+		return fac;
+	}
+</script>

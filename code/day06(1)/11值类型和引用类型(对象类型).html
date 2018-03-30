@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//值类型 ： 基本类型 number  string  boolean
+	//引用类型 ： 对象 object
+	/*var a = 10;
+	b = a;
+	b = 20;
+	alert(a);*///10
+	
+	/*var arr = [1,2];
+	brr = arr;
+	brr[0] = 10;
+	alert( arr[0] );*/
+	
+	/*var a = {
+		name:"jack"
+	}
+	b = a;  
+	b.name = "小米";
+	alert( a.name );*/
+	
+	
+	/*var m = 10;
+	function fn(m){
+		m += 10;
+	}
+	fn(m);
+	alert( m );*/
+	
+	function fn(brr){
+		brr[0] = 10;
+	}
+	var arr = [1,2,3];
+	fn( arr ); // 地址传递（引用传递）
+	alert( arr[0] );
+</script>

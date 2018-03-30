@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// promise对象 承诺实现 ：  通过ajax请求服务器的数据
+	/*document.onclick = function(){
+		var pro = new Promise(function(success,failed){
+			var ajax = new XMLHttpRequest();
+			ajax.open("get","data.json");
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if( ajax.readyState == 4 && ajax.status == 200 ){
+					//请求服务器的数据成功了
+					success(ajax.responseText);
+				}
+			}
+		});
+		pro.then(function(msg){
+			alert( msg );
+		})
+	}*/
+	
+	//通过Promise对象 封装ajax
+	function ajaxPromise(url,data){
+		if( data ){
+			url = url + "?" + data;
+		}
+		var pro = new Promise(function(success,failed){
+			var ajax = new XMLHttpRequest();
+			ajax.open("get",url);
+			ajax.send();
+			ajax.onreadystatechange = function(){
+				if( ajax.readyState == 4 && ajax.status == 200 ){
+					//请求服务器的数据成功了
+					success(ajax.responseText);
+				}
+			}
+			//承诺   多长时间后   如果请求服务器失败了 就执行failed
+			setTimeout(function(){
+				failed("请求数据失败了");
+			},5000)
+		})
+		//promise对象执行完成后  将该对象返回
+		return pro;
+	}
+	document.onclick = function(){
+		var promise = ajaxPromise("daeta.json");
+		promise.then(function(msg){
+			alert( msg );
+		},function(msg){
+			alert(msg);
+		})
+	}
+</script>

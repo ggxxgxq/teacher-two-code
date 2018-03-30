@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+          *{
+              margin: 0; padding: 0;
+          }
+          input{
+              outline: 0;
+          }
+          #pwd_level {
+              list-style: none; margin: 10px; border-radius: 15px;
+              width: 174px; border: solid 1px gainsboro; height: 16px;
+          }
+          #pwd_level li{
+              background: silver;  float: left;
+              width: 50px; margin: 4px; height: 8px;
+          }
+          #pwd_level_tip {
+              margin: 10px; width: 174px; height: 16px;
+          }
+          #pwd_level_tip div{
+              float: left; width: 58px; height: 16px;
+              text-align: center; line-height: 16px;
+              visibility: hidden;
+          }
+     </style>
+     <body>
+          <input type="text" name="pwd" id="pwd" value="" size="30"/>
+          <ul id="pwd_level">
+              <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;"></li>
+              <li></li>
+              <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;"></li>
+          </ul>
+          <div id="pwd_level_tip">
+              <div id="">弱</div>
+              <div id="">中</div>
+              <div id="">强</div>
+          </div>
+     </body>
+</html>
+<script src="../out.js"></script>
+<script>
+ /*要求：
+         至少有一个特殊符号-----强（三个div都变背景色）
+         至少有一个数字和一个字母---中（两个div变背景色）
+         其余的都是弱  （第一个div变背景色）
+         思路 ：    
+		三个开关变量
+		flagChar   false   没有
+		flagNum
+		flagLetter
+		
+		获取输入的一串字符  
+		循环判断  如果有数字  flagNum true
+			   如果有字母    flagLetter  true
+			   特殊字符   flagChar = true
+		
+		循环结束后  判断三个开关变量即可
+		if( flagChar ){ 强
+			
+		}else if( flagNum && flagLetter ){ //中
+			
+		}else{ 弱
+			
+		}
+		 如果长度小于5  不做任何判断*/
+		$id("pwd").onkeyup=function(){	
+			var flagChar=false;
+			var flagNum=false;
+		    var flagLetter=false;
+			
+			var pwd =this.value;
+			var pwd =pwd.toLowerCase();
+			if(pwd.length<5){
+				for(var i=0;i<$id("pwd_level").children.length;i++){
+					
+				$id("pwd_level").children[i].style.backgroundColor ="silver";
+				}
+				return;
+			}
+			for(var i=0;i<pwd.length;i++){	
+	            var ch=pwd.charAt(i);
+				if(ch>="0" && ch<="9"){
+					//$id("pwd_level").children[1].style.backgroundColor ="orange";
+					flagNum=true;
+				}else if(ch>="a"&&ch<="z"){
+					flagLetter=true;
+				}else if(!(ch>="0" && ch<="9") &&!(ch>="a"&&ch<="z")){
+					flagChar=true;
+				}
+			}
+			//排他思想
+			for(var i=0;i<$id("pwd_level").children.length;i++){
+				$id("pwd_level").children[i].style.backgroundColor ="silver";			
+			}
+			if(flagChar){
+				$id("pwd_level").children[2].style.backgroundColor ="orange";
+			}else if(flagLetter && flagNum){
+				$id("pwd_level").children[1].style.backgroundColor ="orange";
+				
+			}else{
+				$id("pwd_level").children[0].style.backgroundColor ="orange";
+				
+			}
+		}
+</script>

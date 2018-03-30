@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//arguments ： 实参副本 
+	function fn(a,b){
+		//如果形参个数和实参个数 不符 ，不让程序执行
+		//alert(typeof arguments );
+		//alert( arguments[3] );
+		//alert( fn.length );
+		if( arguments.length == fn.length ){
+			return a + b;
+		}else{
+			return "形参和实参的个数不相符";
+		}
+	}
+	//alert( fn(3,67) );
+	
+	//定义一个函数  功能计算任意n个数的和  
+	function fnSum(){
+		var sum = 0;
+		for( var i = 0 ; i < arguments.length ; i++ ){
+			sum += arguments[i];
+		}
+		alert( sum );
+	}
+	fnSum( 1,2,3,4,5,6 );
+</script>

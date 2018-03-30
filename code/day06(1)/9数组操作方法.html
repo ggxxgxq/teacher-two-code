@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function fn(){
+		var arr = [1,2,3,4,5];
+		var brr = [34,23];
+		var newarr1 = arr.reverse();
+		alert( newarr1 );
+		var newArr = arr.concat( brr );
+		//alert( newArr );
+		var str = arr.join("-");
+		//alert(str);
+	}
+	fn();
+	function fnPush(){
+		var arr = [12,34];
+		arr.push(2,90,89);
+		alert(arr);
+	}
+	//fnPush();
+	
+	function fnPop(){
+		var arr = [12,34];
+		arr.pop();
+		alert(arr);
+	}
+	//fnPop();
+	function fnShift(){
+		var arr = [12,34];
+		var res = arr.shift();//返回值为  res 删除的元素
+		//alert(arr);
+		alert( res );
+	}
+	//fnShift();
+	
+	function fnUnshift(){
+		var arr = [12,34];
+		arr.unshift(90,89,78);
+		alert( arr );
+	}
+	//fnUnshift();
+	
+	function fnSlice(){
+		var arr = [23,12,45,67,89];
+		var res = arr.slice(1,4);//返回截取后的数据
+		alert(typeof res );
+		//alert( arr );
+	}
+	//fnSlice();
+	
+	function fnSplice(){
+		var arr = [23,12,45,34,6,9];
+		//var res = arr.splice(2);//只有一个参数表示删除从开始下标到数组最后的数据
+		 var res = arr.splice(2,3);//有两个参数 删除从开始位置 指定长度的数据
+		//var res = arr.splice(1,2,222,888);
+		//var res = arr.splice(1,0,222);//[23,222,12,45,34,6,9]
+		console.log(arr); //
+		console.log(res);//
+		
+	}
+	//fnSplice();
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// “adgjk”   c   -- > "acdgjk"  
+	function addChar(str,ch){
+		//找到ch的位置  
+		// 从ch位置处开始截取 preStr   nextStr 
+		//  截取后  拼接  
+		for( var i = 0 ; i < str.length ; i++ ){
+			if( str.charAt(i) > ch ){
+				var preStr = str.substring(0,i) ;//左侧
+				var nextStr = str.substr(i);//右边
+				break;
+			}
+		}
+		//如果i == str.length 说明 ch要添加到str的末尾
+		if( i == str.length ){
+			return str + ch;
+		}else{
+			return preStr + ch + nextStr;
+		}
+	}
+	alert( addChar( "acdgjk" , "e" ) );
+</script>

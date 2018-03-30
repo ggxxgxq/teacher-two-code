@@ -1,0 +1,132 @@
+﻿1、
+    alert(a);   function a(){alert(3);}
+    var a=1; 
+    alert(a);  1
+    function a(){alert(2);}
+    alert(a);  1
+    var a=3;   
+    alert(a);  3
+    function a(){alert(3);}
+    alert(a);  3
+ 一、预解析   找var  function  参数   
+    a --- > 3
+ 二、逐行解读
+ 		
+2、
+	alert(a);
+	var a = 20;
+    
+
+3、
+        var a=1;
+        function fn(){
+            alert(a);
+            a=2;
+        }
+        fn();
+        alert(a);
+1、预解析
+a  --- > undefined 
+fn --- > function fn(){ ... }
+2、逐行解读代码
+a = 1
+1
+2
+4、
+        var a=1;
+        function fn(a){
+            alert(a);
+            a=2; 改变局部变量a的值  和全局变量a没有关系
+        }
+        fn();
+        alert(a);找全局变量a
+一、预解析  
+a--->1
+fn -- > function fn(a){  }   预解析时 解析到参数 赋予一个undefined
+二、逐行解读代码
+undefined
+1
+
+5、
+	局部变量的优先权高于全局变量
+    var a=1;
+    function fn(a){
+        alert(a);
+        a=2;  改变的是局部变量a的值
+    }
+    fn(a);
+    alert(a);
+一、找var  function  参数
+a---》1
+fn -->function fn( a ){}
+二、解读代码
+1
+1
+
+6、
+
+    var a=1;
+    function fn(){
+        alert(a);
+        var a=2;
+    }
+    fn();
+    alert(a);
+1、预解析  
+a -- >1
+fn -- > function fn(){  仓库 ： a-->undefined }
+2、逐行解读
+undefined
+1
+
+7、
+	console.log(num);   undefined
+	var num = 24;
+	console.log(num);   24
+ 
+	func(100 , 200); 
+	function func(num1 , num2) {
+ 	  var total = num1 + num2;  
+	  console.log(total);  300
+	}
+
+
+8、
+	
+	fn();          
+	function fn() {console.log(1);}       
+	fn();            
+	var fn = 10;       
+	fn();    报错      
+	function fn() {console.log(2);}       
+	fn();
+	
+	fn -- > 10
+	输出：
+	2
+	2
+9、
+
+	var a = 1;
+	fn(); a = 2
+	function fn(){
+		a = a + 1;
+		console.log(a);
+		return a;
+	}
+	fn();  a = 3
+	console.log( fn() + 1 ); a = 4
+	
+	a---1
+	fn --- function fn(){...}
+	输出：
+	2
+	3
+	4
+	5
+10、
+
+	alert(a);  
+	function a(){
+　　		alert("hello")
+	}

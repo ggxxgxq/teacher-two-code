@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	document.body.innerHTML  = "您的页面3秒后跳转";
+	setTimeout(function(){
+		//location.href = "5window对象.html";
+		//location.assign("5window对象.html");
+		//location.replace("5window对象.html");
+	},3000)
+	
+	//页面每间隔3秒就自动刷新一次
+	setInterval(function(){
+		location.reload();
+	},3000)
+</script>

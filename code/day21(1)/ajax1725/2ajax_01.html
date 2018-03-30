@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value= "获取服务器数据" id="btn"/>
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	//点击按钮  获取服务器的数据
+	oBtn.onclick = function(){
+		//1 创建ajax对象
+		//var ajax = new XMLHttpRequest();
+		//var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		var ajax = null;
+		if( window.XMLHttpRequest ){
+			ajax = new XMLHttpRequest();
+		}else{
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//2 建立和服务器的连接
+		ajax.open( "get" , "http://127.0.0.1/ajax1725/data.txt" );
+
+		//3 向服务器发送数据
+		ajax.send();
+		
+		
+		//4 服务器处理客户端请求的数据    将数据返回来   
+		/*setTimeout(function(){
+			alert( ajax.responseText );
+		},10)*/
+		//通过onreadystatechange  响应服务器处理的结果
+		ajax.onreadystatechange = function(){
+			//alert( ajax.readyState );
+			//状态值  ：  0 1 2 3 4 
+			//状态码  ： 200 
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				alert( ajax.responseText );
+			}
+		}
+	}
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Child(dad,mum){
+		this.dad = dad;
+		this.mum = mum;
+		this.cry = function(){
+			//小孩哭了  通知父亲 喂奶了
+			this.dad.weinai();
+		}
+		//观察者模式   
+		setTimeout(function(){
+			//该时间后  小孩哭了
+			this.cry();
+		}.bind(this),Math.random()*5000)
+	}
+	
+	function Father(){
+		this.weinai = function(){
+			alert("孩子哭了，父亲开始喂奶了");
+		}
+	}
+	
+	var f = new Father();
+	var child = new Child(f,null);
+	
+</script>

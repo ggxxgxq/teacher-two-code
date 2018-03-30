@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//输入月份 显示天数
+	var month = parseInt( prompt("请输入月份") );
+	switch( month ){
+		case 1 :
+		case 3 :
+		case 5 :
+		case 7 :
+		case 8 :
+		case 10 :
+		case 12 : alert( "31天" );break;
+		case 4 :
+		case 6 :
+		case 9 :
+		case 11 :alert( "30天" );break;
+		case 2 : 
+			var year = prompt( "请输入一个年份" );
+			year%4==0&&year%100!=0||year%400==0 ? alert("29天") : alert("28天");
+			break;
+		default : 
+			alert("月份有误");
+	}
+	
+	
+	 
+</script>

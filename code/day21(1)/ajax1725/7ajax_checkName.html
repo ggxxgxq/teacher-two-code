@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" /><span id="s"></span>
+	</body>
+</html>
+<script src="ajax.js"></script>
+<script>
+	//客户端操作文本框 ： 失去焦点时  通过ajax将用户名传递到服务器上    服务器验证用户名的唯一性
+	var oTxt = document.getElementById("txt");
+	var oSpan = document.getElementById("s");
+	oTxt.onblur = function(){
+		/*var ajax = new XMLHttpRequest();
+		ajax.open("GET","http://127.0.0.1/ajax1725/checkName.php?username="+this.value);
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 ){
+				var res = ajax.responseText;
+				//前端 根据接口返回的数据  做判断
+				switch( res ){
+					case "0" :
+						oSpan.innerHTML = "用户名可以使用";
+						break;
+					case "1" : 
+						oSpan.innerHTML = "用户名已存在，换一个";
+						break;
+					case "2" :
+						oSpan.innerHTML = "下辈子再试试~~";
+						break;
+				}
+			}
+		}*/
+		var url = "http://127.0.0.1/ajax1725/checkName.php";
+		var data = "username="+this.value;
+		ajaxGet( url,function(res){
+			//前端 根据接口返回的数据  做判断
+			switch( res ){
+				case "0" :
+					oSpan.innerHTML = "用户名可以使用";
+					break;
+				case "1" : 
+					oSpan.innerHTML = "用户名已存在，换一个";
+					break;
+				case "2" :
+					oSpan.innerHTML = "下辈子再试试~~";
+					break;
+			}
+		},data )
+	}
+	/*
+	 后台提供的接口 ： "http://127.0.0.1/ajax1725/checkName.php"
+	 接口参数 ：   username   用户名
+	 接口返回值 ：
+	 1  表示用户名存在 
+	 0  表示用户名可以使用
+	 2  数据库出错了
+	 */
+</script>

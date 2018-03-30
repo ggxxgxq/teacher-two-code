@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// 定义一个函数 功能实现 显示 年 月 日  时分 秒
+	function dateToString(sign){
+		//如果用户不传递任何参数  默认日期间隔符号是  - 
+		/*if( !sign ){
+			sign = "-";
+		}*/
+		sign = sign || "-";//如果sign是未定义，就按默认值 "-"
+		var d = new Date();
+		var y = d.getFullYear();
+		var m =toTwo( d.getMonth() + 1 ) ;
+		var _date =toTwo( d.getDate() );
+		var h =toTwo( d.getHours() );
+		var min =toTwo( d.getMinutes() );
+		var s =toTwo( d.getSeconds() );
+		return y + sign + m + sign + _date + " " + h + ":" + min + ":" + s;
+	}
+	//如果得到的是小于10的数 就 拼接0
+	function toTwo(val){
+		return val < 10 ? "0" + val : val;
+	}
+	alert( dateToString("/") );
+</script>

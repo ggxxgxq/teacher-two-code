@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//var ins = null;
+   /* function Animal(){
+    	//为了防止全局变量的污染  使用私有变量代替 全局变量 ins
+    	//在构造函数的内部 可以通过    构造函数名.变量      创建一个私有变量     
+        if(Animal.ins){
+            return Animal.ins;
+        }
+        Animal.ins = this
+        return Animal.ins;
+    }
+ 
+    var a1 = new Animal();
+    var a2 = new Animal();
+    var a3 = new Animal();
+	alert( a2 == a3 );*/
+	
+	//单例模式的第二种实现方式 ： 
+	function Animal(){
+		if( !Animal.instance ){
+			Animal.instance = {
+				name : "xb",
+				age : 2
+			}
+		}
+		return Animal.instance;
+	}
+	var a1 = new Animal();
+	var a2 = new Animal();
+	alert( a1 == a2 );
+</script>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width:200px;height:200px;border:1px solid red;margin:200px"></div>
+	</body>
+</html>
+<script>
+	var oDiv = document.querySelector("div");
+	oDiv.onmousedown = function(e){
+		var e = e || event;
+		console.log( e.offsetY );
+		console.log( e.clientY );
+		console.log( e.pageY );
+	}
+</script>

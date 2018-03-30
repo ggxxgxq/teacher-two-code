@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="../public.js"></script>
+<script>
+	//随机抽学生   定义一个含有10个学生姓名的数组，
+	//随机抽取五个不重名的学生存放到新数组中并打印出来
+	function randomStu(arr){
+		var brr = [];
+		for( var i = 0 ; i < 5 ; i ++ ){
+			var index = rand(0,9);//随机下标
+			if( brr.indexOf( arr[index] ) == -1){ //不存在
+				brr.push( arr[index] );
+			}else{
+				//存在 就重新抽
+				i--;
+			}
+		}
+		return brr;
+	}
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	alert( randomStu( arr ) );
+</script>

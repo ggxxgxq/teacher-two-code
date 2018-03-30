@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//求数组中最大数和最小数
+	function getMax(arr){
+		// [12,34,2,56,78]
+		// 假设max存最大数  max = arr[0]
+		var max = arr[0];
+		var min = arr[0];//假设数组中第一个数最小
+		for( var i = 1 ; i < arr.length ; i++ ){
+			if( max < arr[i] ){
+				max = arr[i];
+			}
+			if( min > arr[i] ){
+				min = arr[i];
+			}
+		}
+		alert("最大数是:" +  max + ",最小数是：" + min );
+	}
+	//getMax( [12,34,2,56,78] );
+	
+	/*创建一个对象，该对象存储一个学生的信息，该对象包含学号、身份证、年龄、性别、所学专业等属性信息，同时该对象包含一个自我介绍的方法，用来输出该对象的所有信息*/
+	var obj = {
+		sId : 1,
+		sCard : "211224",
+		sAge : 20,
+		sSex : "男",
+		edu : "计算机",
+		say : function(){
+			console.log("大家好，我叫小明,我今年"+obj.sAge+"岁了,至今未婚");
+		}
+	}
+	//obj.say();
+	
+	//输出二维数组的左下半三角 
+	var arr = [[],[],[],[],[]];//空数组  5行
+	// 1 2 3 4 5
+	// 6 7 8 9 10
+	// 11 12 ...
+	var num = 1;
+	for( var i = 0 ;i < 5 ; i++ ){
+		for( var j = 0 ;  j < 5 ; j++ ){
+			arr[i][j] = num++;
+		}
+		for( var j = 0 ; j <= i ; j++ ){
+			document.write(arr[i][j] + " ");
+		}
+		document.write("<br>");
+	}
+	//定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
+	//然后按顺序每五个数求出一个平均值，
+	//放在另一个数组中并输出。试编程。
+	function fun(){
+		var arr = [];
+		for( var i = 0 ; i < 30 ; i ++ ){
+			arr[i] = (i+1)*2;
+		}
+		var sum = 0;//
+		var brr = [];//存放每5个数的和
+		//var index = 0;
+		for( var i = 0 ; i < 30; i++ ){//4  9   14 
+			sum += arr[i];
+			if( i%5 == 4 ){ //每5个数 
+				/*brr[index] = parseInt(sum/5);//0 1 2 3 4
+				index++;*/
+				brr.push( parseInt(sum/5) );
+				sum = 0;//清零
+			}
+		}
+		return brr;
+	}
+	alert( fun() );
+</script>

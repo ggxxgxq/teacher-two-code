@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script>
+	//点击每一个li时   获取下标
+	var list = document.getElementsByTagName("li");
+	//闭包实现 获取下标
+	for( var i = 0 ; i < list.length ; i++ ){
+		list[i].onclick = (function(k){
+			return function(){ //闭包 
+				alert( k );
+			}
+		})(i)
+	}
+	
+	//  fn(3)(12)  使用闭包  得到 15
+	/*function fn(m){
+		return function(n){
+			alert( m+n );
+		}
+	}
+	
+	fn(3)(12)*/
+	
+	// fn(1)(2)(3)   使用闭包得到6
+	function fn(m){
+		return function(n){
+			return function(k){
+				alert(m+n+k);
+			}
+		}
+	}
+	fn(1)(2)(3);
+</script>

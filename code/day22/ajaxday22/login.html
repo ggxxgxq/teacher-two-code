@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名： <input type="text" id="uname" />
+		密码： <input type="text" id="upwd" />
+		<input type="button" value="登录" id="btn"/>
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	var txtName = document.getElementById("uname");
+	var txtPwd = document.getElementById("upwd");
+	oBtn.onclick = function(){
+		var ajax = new XMLHttpRequest();
+		var data = "uname="+txtName.value + "&upwd="+txtPwd.value;
+		ajax.open("GET","http://127.0.0.1/ajaxday22/login.php?" + data);
+		ajax.send();
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState==4 && ajax.status == 200 ){
+				var res = ajax.responseText;
+				switch( res ){
+					case "0":
+						alert("登录失败");
+						break;
+					case "1":
+						alert("登录成功，您的页面将会在3秒后跳转到xxx页面");
+						setTimeout(function(){
+							location.href = "http://www.baidu.com";
+						},3000)
+				}
+			}
+		}
+	}
+	/*
+	 接口路径 ： http://127.0.0.1/ajaxday22/login.php
+	接口参数 ：  uname  用户名   upwd  密码
+	接口返回值 ：
+		1  成功
+		0 失败
+	 */
+</script>

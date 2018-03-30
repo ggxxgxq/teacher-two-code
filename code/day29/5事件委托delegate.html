@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.11.1.js"></script>
+	<style type="text/css">
+		 #box{
+		 	width: 100px;
+		 	height: 100px;
+		 	position: absolute;
+		 	left: 100px;
+		 	top: 100px;
+		 	background: skyblue;
+		 	cursor: move;
+		 }
+	</style>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+			<li>孩子多个6</li>
+		</ul>
+	</body>
+</html>
+<script>
+	/*
+	 box.onclick = function(){
+	 	target:
+	 }
+	 box.addEventListener()  
+	 */
+	//通过为父级元素ul绑定click事件  实现事件委托  事件源 ul的子元素
+	/*$("ul").delegate("li","click",function(){
+		//alert( this.tagName );
+		$(this).css("fontSize",20)
+	})*/
+	
+	$("li").one("click",function(){
+		alert("one-click");
+	})
+</script>

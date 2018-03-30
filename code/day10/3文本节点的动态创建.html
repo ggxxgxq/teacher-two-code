@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.hh{
+			color:red;
+			background-color:skyblue;
+		}
+	</style>
+	<body>
+		<input type="button" value="创建段落" id="btn" />
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	oBtn.onclick = function(){
+		var oP = document.createElement("p");//<p>eeee</p>
+		var oTxt = document.createTextNode("我是一个段落");
+		oP.appendChild( oTxt );
+		document.body.appendChild( oP );
+		oP.className = "hh";
+	}
+	
+</script>

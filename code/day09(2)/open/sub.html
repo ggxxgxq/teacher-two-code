@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		子窗口
+		<input type="button" value="操作父窗口" id="btn"/>
+	</body>
+</html>
+<script>
+	var oBtn = document.getElementById("btn");
+	//点击按钮  操作 父窗口
+	oBtn.onclick = function(){
+		//在子窗口下 如何找到父窗口  opener  
+		window.opener.document.body.style.backgroundColor = "teal";
+	}
+</script>

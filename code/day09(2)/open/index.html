@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		主窗口
+		<input type="button" value="操作子窗口" id="btn"/>
+	</body>
+</html>
+<script>
+	 
+	var subWin = open("sub.html","_blank","width=300,height=300,left=200,top=100");
+	//操作子窗口  让子窗口处于最前面显示 
+	
+	/*document.onclick = function(){
+		subWin.focus();
+	}*/
+	
+	var oBtn = document.getElementById("btn");
+	
+	//操作子窗口
+	oBtn.onclick = function(){
+		//subWin代表了子窗口的window
+		//通过点击主窗口的按钮操作子窗口
+		subWin.document.body.style.backgroundColor = "pink";
+		subWin.focus();
+	}
+	
+	//当父窗口的页面被关闭时  判断子窗口是否被关闭了，如果没有被关闭，就一起关闭
+	onunload = function(){
+		//closed  返回布尔值  如果窗口关闭返回true  没有关闭返回false
+		if( !subWin.closed ){// 没有被关闭
+			//close()  关闭窗口
+			subWin.close();
+		}
+	}
+</script>

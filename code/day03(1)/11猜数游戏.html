@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="请猜数" />
+	</body>
+</html>
+<script>
+	/*
+	 点击按钮 ： 计算机会随机产生1--10的一个数rand 
+	    randNum = parseInt( Math.random()*10 + 1 )
+	 
+	 用户输入一个数  ： 3次机会1--3    循环3次   7
+	 循环体实现 ： 
+	 	如果 用户输入的数字 == randNum  程序结束break
+	 	如果用户输入的数字 > randNum 提示 ： 猜大了
+	 	如果用户输入的数字 < randNum 提示： 猜小了
+	 	
+	如果三次机会都没有猜中，此时循环已经结束了 循环变量 4
+	如果循环变量为4  告诉用户 ： 最终数字是 randNum
+	
+	 */
+	//找到按钮
+	var oBtn = document.getElementById("btn");
+	//给按钮添加点击事件
+	oBtn.onclick = function(){
+		//计算机随机产生1--10的数
+		var randNum = parseInt( Math.random()*10 + 1 );
+		//用户只有3次猜数机会
+		for( var i = 1 ; i <= 3 ; i++ ){
+			var playerNum = prompt( "请输入一个数字1--10:" );
+			if( playerNum == randNum ){
+				alert("恭喜您猜对了");
+				break;
+			}else if( playerNum > randNum ){
+				alert( "猜大了" );
+			}else if( playerNum < randNum ){
+				alert( "猜小了" );
+			}
+		}
+		if( i == 4 ){
+			alert("抱歉，您的3次机会已用完，最终数字是：" + randNum);
+		}
+	}
+</script>

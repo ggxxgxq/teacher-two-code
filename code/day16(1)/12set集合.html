@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*var set = new Set();
+	//size属性 获取集合中数据个数               
+	//add() 向集合中添加一个数
+	set.add(100).add(200).add(300);
+	console.log( set );*/
+	
+	/*var set = new Set([1,2,"2",3]);
+	console.log( set );*/
+	
+	//使用set集合为数组去重
+	/*var arr = [12,12,34,3,2,3,3,3];
+	arr = Array.from( new Set( arr ) ); 
+	console.log( arr );*/
+	
+	//console.log( Array.from( new Set([1,1,23,1,23,3,5,6,5]) ) );
+	//console.log( [...new Set([1,1,23,1,23,3,5,6,5])] );
+	
+	
+	//集合中的方法
+	var set = new Set([1,2,"2",3]);
+	//alert( set.size );
+	//set.delete(3);
+	//set.clear();
+	//console.log( set );
+	
+	//set集合遍历
+	set.forEach( (item)=>{ console.log( item ); } )
+</script>

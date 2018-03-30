@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script src="../public.js"></script>
+<script type="text/javascript">
+	//this : 指向方法的调用者  或  事件的触发者  
+	//为五个li添加背景色
+	$.fn.extend({
+		setBgColor : function(){ //设置所有行的颜色一致
+			//console.log( this )
+			//this 指向方法的调用者  jq对象
+			this.css("background","pink");
+		},
+		setBgColor2 : function(){ //每一行的颜色都不同
+			this.each(function(){
+				//操作每一行的颜色不一致
+				$(this).css("background",getColor());
+			})
+		},
+		enter : function(){
+			this.mouseenter(function(){
+				color = $(this).css("backgroundColor");
+				$(this).css({"background":"red","fontSize":20});
+			})
+		},
+		leave : function(){
+			this.mouseleave(function(){
+				$(this).css({"background":color,"fontSize":16})
+			})
+		}
+	})
+	$("li").setBgColor2();
+	$("li").enter();
+	$("li").leave();
+</script>

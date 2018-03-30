@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//解构赋值 
+	//解构赋值还可以作用在函数的参数上 
+	function fn({name,age}){
+		alert( name + "," + age  );
+	}
+	//fn({age:12,name:"jack"});
+	
+	//解构赋值还可以实现两个变量的交换  
+	// 不用第三个变量  实现两个变量的交换    
+	var x = 10;
+	var y = 20;
+	[x,y] = [y,x];
+	//alert( x );
+	
+	function fn(arr){
+		for( var i = 0 ; i < arr.length-1 ; i++ ){
+			for( var j = 0 ; j < arr.length-1-i; j++ ){
+				if( arr[j] > arr[j+1] ){
+					[ arr[j],arr[j+1] ] = [ arr[j+1] , arr[j] ];
+				}
+			}
+		}
+		alert(arr);
+	}
+	fn( [23,12,45,6,7,8] );
+</script>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	String.prototype.mytrim = function(){
+	    return this.replace( /(^\s+)|(\s+$)/g , ""  );
+	}
+	var str = "   hello world    ";
+	console.log( str.mytrim() );
+</script>

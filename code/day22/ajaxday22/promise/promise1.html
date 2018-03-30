@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	document.onclick = function(){
+		//promise 对象的创建 
+		var pro = new Promise(function(success,failed){
+			//success failed 通过这两个参数 通知promise对象承诺的事情是成功了还是失败了
+			success();//调用success通知promise对象承诺事情成功
+			//failed();//调用success通知promise对象承诺事情成功
+		});
+		
+		//承诺的事情解决了   调用then方法  
+		pro.then(function(){
+			console.log( "已解决" );
+		})
+		
+		//承诺的事情失败  调用catch方法
+		pro.catch(function(){
+			console.log( "失败了" );
+		})
+		//console.log( pro );
+	}
+</script>
